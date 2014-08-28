@@ -4,15 +4,9 @@ SCRIPTPATH=`pwd -P`
 cd - > /dev/null
 
 # Read *upstream* package version from debian/changelog. Format: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version
-PKG_VERSION=$(dpkg-parsechangelog -ldebian/changelog | sed -n 's/^Version: //p' | cut -d ":" -f 2- | rev | cut -d "-" -f 2- | rev )
-echo Detected version: $PKG_VERSION
-read -p "Continue? (Y/n) " wantupload
-if [ "${wantupload:-y}" != "y" ] && [ "${wantupload:-Y}" != "Y" ]
-then
-	exit
-fi
+read -p "Notepadqq version (e.g. 0.13.9): " PKG_VERSION
 
-TMP_DIR=/tmp/pkg-notepadqq-$PKG_VERSION
+TMP_DIR="$SCRIPTPATH"/tmp
 
 # Clean the build directory
 rm -rf "$TMP_DIR"
@@ -24,6 +18,7 @@ cd "$TMP_DIR"/notepadqq-$PKG_VERSION
 
 # Create source "orig" tarball
 REVISION=master
+echo
 read -p "What commit/branch/tag do you want to package? [$REVISION] " input
 REVISION="${input:-$REVISION}"
 git checkout $REVISION || exit # Needed for branches that are not tracked by default
@@ -32,14 +27,29 @@ git archive $REVISION | bzip2 > ../notepadqq_$PKG_VERSION.orig.tar.bz2
 # Copy debian directory
 cp -r "$SCRIPTPATH"/debian "$TMP_DIR"/notepadqq-$PKG_VERSION/debian
 
+echo
+echo
+echo "Upstream source code downloaded and ready in:"
+echo "$TMP_DIR/notepadqq-$PKG_VERSION/"
+echo "Open another shell to apply your changes (e.g. to run dch)."
+read -p "When ready, press enter to continue..." dummy
+
 # Create source package, exit if fails
 debuild -S || exit
 
-# Remove source directory
-rm -rf "$TMP_DIR"/notepadqq-$PKG_VERSION
-
 echo
 echo "Package created in: $TMP_DIR/"
+
+# Copy the modified debian folder to the git repository
+read -p "Do you want to update the debian folder with your latest changes? (Y/n) " updatedebian
+if [ "${updatedebian:-y}" = "y" ] || [ "${updatedebian:-Y}" = "Y" ]
+then
+	rm -rf "$SCRIPTPATH"/debian
+	cp -r "$TMP_DIR"/notepadqq-$PKG_VERSION/debian "$SCRIPTPATH"/debian
+fi
+
+# Remove source directory
+rm -rf "$TMP_DIR"/notepadqq-$PKG_VERSION
 
 echo
 read -p "Do you want to upload the package on Launchpad (ppa:notepadqq-team/notepadqq)? (y/N) " wantupload
