@@ -1,4 +1,7 @@
 #!/bin/sh
+cd `dirname $0` > /dev/null
+SCRIPTPATH=`pwd -P`
+cd - > /dev/null
 
 # Read package version
 PKG_VERSION=$(dpkg-parsechangelog -ldebian/changelog | sed -n 's/^Version: //p' | cut -d "-" -f 1)
@@ -25,6 +28,9 @@ read -p "What commit/branch/tag do you want to package? [$REVISION] " input
 REVISION="${input:-$REVISION}"
 git checkout $REVISION || exit # Needed for branches that are not tracked by default
 git archive $REVISION | bzip2 > ../notepadqq_$PKG_VERSION.orig.tar.bz2
+
+# Copy debian directory
+cp -r "$SCRIPTPATH"/debian "$TMP_DIR"/notepadqq-$PKG_VERSION/debian
 
 # Create source package, exit if fails
 debuild -S || exit
