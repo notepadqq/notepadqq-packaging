@@ -3,8 +3,8 @@ cd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd -P`
 cd - > /dev/null
 
-# Read package version
-PKG_VERSION=$(dpkg-parsechangelog -ldebian/changelog | sed -n 's/^Version: //p' | cut -d "-" -f 1)
+# Read *upstream* package version from debian/changelog. Format: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version
+PKG_VERSION=$(dpkg-parsechangelog -ldebian/changelog | sed -n 's/^Version: //p' | cut -d ":" -f 2- | rev | cut -d "-" -f 2- | rev )
 echo Detected version: $PKG_VERSION
 read -p "Continue? (Y/n) " wantupload
 if [ "${wantupload:-y}" != "y" ] && [ "${wantupload:-Y}" != "Y" ]
