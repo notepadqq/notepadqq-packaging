@@ -16,8 +16,7 @@ Package: notepadqq
 Architecture: any
 Depends:
    ${shlibs:Depends},
-   ${misc:Depends},
-   libjs-jquery
-Description: Notepad++ clone for Linux
+   ${misc:Depends}
+Description: Notepad++-like editor for Linux
  Text editor with support for multiple programming
  languages, multiple encodings and plugin support.
