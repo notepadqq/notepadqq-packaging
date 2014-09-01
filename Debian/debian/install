@@ -1,4 +1,4 @@
+out/release/bin/notepadqq-bin   /usr/bin
 out/release/bin/notepadqq       /usr/bin
-out/release/appdata/notepadqq   /usr/share/notepadqq
 out/release/appdata/editor      /usr/share/notepadqq
 /usr/share
