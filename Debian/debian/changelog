@@ -1,3 +1,9 @@
+notepadqq (0.30.2-1~trusty1) trusty; urgency=medium
+
+  * File monitoring
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Mon, 01 Sep 2014 12:37:23 +0200
+
 notepadqq (0.30.1-1ubuntu1~trusty) trusty; urgency=medium
 
   * Search / replace functionality
