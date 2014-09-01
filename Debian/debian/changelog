@@ -1,3 +1,12 @@
+notepadqq (0.30.3-1~trusty1) trusty; urgency=medium
+
+  * 'Replace' menu entry
+  * CodeMirror update to v4.5
+  * Improved highlighting
+  * Fix package paths
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Mon, 01 Sep 2014 22:03:58 +0200
+
 notepadqq (0.30.2-1~trusty1) trusty; urgency=medium
 
   * File monitoring
