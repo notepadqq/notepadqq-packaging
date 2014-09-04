@@ -17,7 +17,7 @@ git clone https://github.com/notepadqq/notepadqq.git "$TMP_DIR"/notepadqq-$PKG_V
 cd "$TMP_DIR"/notepadqq-$PKG_VERSION
 
 # Create source "orig" tarball
-REVISION=master
+REVISION=v$PKG_VERSION
 echo
 read -p "What commit/branch/tag do you want to package? [$REVISION] " input
 REVISION="${input:-$REVISION}"
