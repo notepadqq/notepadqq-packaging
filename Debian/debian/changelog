@@ -1,3 +1,15 @@
+notepadqq (0.31.0-1~trusty1) trusty; urgency=medium
+
+  * Misc fixes
+  * Speed improvements
+  * Option to disable Qt version check at startup
+  * Change language highlighter directly from the menu
+  * Match brackets
+  * Support for shift+tab
+  * Per-language indentation settings (tab or spaces, size)
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Thu, 04 Sep 2014 14:59:59 +0200
+
 notepadqq (0.30.3-1~trusty1) trusty; urgency=medium
 
   * 'Replace' menu entry
