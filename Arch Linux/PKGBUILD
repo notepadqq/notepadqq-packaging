@@ -2,7 +2,7 @@
 
 pkgname=notepadqq-git
 _pkgname=notepadqq
-pkgver=0.32.0.r9.g3c62167
+pkgver=0.32.0.r12.gc658438
 pkgrel=1
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ depends=('qt5-webkit=5.3.1' 'hicolor-icon-theme' 'desktop-file-utils' 'file')
 provides=('notepadqq')
 conflicts=('notepadqq-bin')
 makedepends=('qt5-base')
+options=('!strip')
 
 sha1sums=('SKIP'
           '3f522228673391ab18e5bdf3cd90724d75074d8c')
@@ -36,14 +37,7 @@ package() {
 	cd ${srcdir}/${_pkgname}/src/ui
 	make DESTDIR=${pkgdir}/usr install
 	
-	cd ${srcdir}/${_pkgname}
-	
-	install -dm 755 "${pkgdir}/usr/bin"
-	install -Dm 755 out/release/bin/notepadqq-bin "${pkgdir}/usr/bin"
-	install -Dm 755 out/release/bin/notepadqq "${pkgdir}/usr/bin"
-	
-	install -dm 755 "${pkgdir}/usr/share/notepadqq"
-	cp -r out/release/appdata/editor/ "${pkgdir}/usr/share/notepadqq"
+	chmod +x "${pkgdir}/usr/share/notepadqq"
 	
 	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
 }
