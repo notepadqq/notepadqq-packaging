@@ -36,7 +36,5 @@ package() {
 	cd ${srcdir}/${_pkgname}/src/ui
 	make DESTDIR=${pkgdir}/usr install
 	
-	chmod +x "${pkgdir}/usr/bin/notepadqq"
-	
 	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
 }
