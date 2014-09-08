@@ -12,7 +12,6 @@ depends=('qt5-webkit=5.3.1' 'hicolor-icon-theme' 'desktop-file-utils' 'file')
 provides=('notepadqq')
 conflicts=('notepadqq-bin')
 makedepends=('qt5-base')
-options=('!strip')
 
 sha1sums=('SKIP'
           '3f522228673391ab18e5bdf3cd90724d75074d8c')
