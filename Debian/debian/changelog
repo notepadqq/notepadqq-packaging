@@ -1,3 +1,20 @@
+notepadqq (0.33.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * Re-enabled window size grip
+  * Window geometry now gets saved
+  * Allow to launch Notepadqq from command line
+  * Current file name in window title
+  * Fixed undo history for opened files
+  * 'Close all but current document' implemented
+  * 'Save all' implemented
+  * New 'About' window
+  * Syntax highlighter for Makefiles
+  * Support for icon themes
+  * Introduced a banner to alert user about file changes
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Thu, 11 Sep 2014 16:02:33 +0200
+
 notepadqq (0.32.0-1~trusty1) trusty; urgency=medium
 
   * Stability fixes
