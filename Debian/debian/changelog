@@ -1,3 +1,16 @@
+notepadqq (0.34.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * New Search dialog
+  * Ability to search using regular expressions
+  * Advanced search options
+  * Find next/find prev from main window
+  * 'Rename' menu
+  * Support for word wrap
+  * Makefile highlighter improvements
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Wed, 17 Sep 2014 10:31:38 +0200
+
 notepadqq (0.33.0-1~trusty1) trusty; urgency=medium
 
   * Bug fixes
