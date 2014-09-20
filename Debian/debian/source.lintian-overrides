@@ -1,0 +1,2 @@
+# no point to build it from source
+notepadqq source: source-is-missing src/editor/libs/jquery/jquery.min.js
