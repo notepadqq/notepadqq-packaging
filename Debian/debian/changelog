@@ -1,3 +1,17 @@
+notepadqq (0.35.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * Keep track of recent documents
+  * Faster document loading
+  * Remember scroll and cursor position when reloading file from disk
+  * Fixed SVG loading problems on some machines
+  * Support for UNIX, OS X, Windows and old Mac line endings
+  * Save zoom and word wrap across sessions
+  * Set focus to search box when opening search window
+  * Preliminary support for text encodings
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 21 Sep 2014 12:22:54 +0200
+
 notepadqq (0.34.0-1~trusty1) trusty; urgency=medium
 
   * Bug fixes
