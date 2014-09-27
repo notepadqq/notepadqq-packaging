@@ -3,7 +3,6 @@ cd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd -P`
 cd - > /dev/null
 
-# Read *upstream* package version from debian/changelog. Format: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version
 read -p "Notepadqq version (e.g. 0.13.9): " PKG_VERSION
 
 TMP_DIR="$SCRIPTPATH"/tmp

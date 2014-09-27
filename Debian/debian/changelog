@@ -1,3 +1,56 @@
+notepadqq (0.36.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * Introduced color schemes for the editor
+  * Improved syntax highlighter detection of the language
+  * Insert / Overwrite modes
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 27 Sep 2014 12:35:59 +0200
+
+notepadqq (0.35.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * Keep track of recent documents
+  * Faster document loading
+  * Remember scroll and cursor position when reloading file from disk
+  * Fixed SVG loading problems on some machines
+  * Support for UNIX, OS X, Windows and old Mac line endings
+  * Save zoom and word wrap across sessions
+  * Set focus to search box when opening search window
+  * Preliminary support for text encodings
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 21 Sep 2014 12:22:54 +0200
+
+notepadqq (0.34.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * New Search dialog
+  * Ability to search using regular expressions
+  * Advanced search options
+  * Find next/find prev from main window
+  * 'Rename' menu
+  * Support for word wrap
+  * Makefile highlighter improvements
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Wed, 17 Sep 2014 10:31:38 +0200
+
+notepadqq (0.33.0-1~trusty1) trusty; urgency=medium
+
+  * Bug fixes
+  * Re-enabled window size grip
+  * Window geometry now gets saved
+  * Allow to launch Notepadqq from command line
+  * Current file name in window title
+  * Fixed undo history for opened files
+  * 'Close all but current document' implemented
+  * 'Save all' implemented
+  * New 'About' window
+  * Syntax highlighter for Makefiles
+  * Support for icon themes
+  * Introduced a banner to alert user about file changes
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Thu, 11 Sep 2014 16:02:33 +0200
+
 notepadqq (0.32.0-1~trusty1) trusty; urgency=medium
 
   * Stability fixes
