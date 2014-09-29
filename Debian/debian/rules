@@ -4,21 +4,20 @@
 	dh ${@} --parallel
 
 override_dh_auto_clean:
-	dh_auto_clean -Dsrc/ui
+	dh_auto_clean
 	rm -rf out
 
 override_dh_auto_configure:
-	dh_auto_configure -v -Dsrc/ui
+	dh_auto_configure -v
 
 override_dh_auto_build:
-	dh_auto_build -Dsrc/ui
+	dh_auto_build
 
 override_dh_auto_install:
-	dh_auto_install -Dsrc/ui --destdir=$(CURDIR)/debian/tmp
+	dh_auto_install --destdir=$(CURDIR)/debian/tmp
 
 override_dh_install:
 	dh_install -XLICENSE -XAUTHORS -X.md
-	find $(CURDIR)/debian/notepadqq/usr/share/notepadqq/editor/libs/codemirror -type f -name \*.html -delete
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz -z9

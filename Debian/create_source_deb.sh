@@ -21,6 +21,8 @@ echo
 read -p "What commit/branch/tag do you want to package? [$REVISION] " input
 REVISION="${input:-$REVISION}"
 git checkout $REVISION || exit # Needed for branches that are not tracked by default
+git submodule init
+git submodule update
 git archive $REVISION | bzip2 > ../notepadqq_$PKG_VERSION.orig.tar.bz2
 
 # Copy debian directory
