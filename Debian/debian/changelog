@@ -1,3 +1,15 @@
+notepadqq (0.37.0-1~trusty1) trusty; urgency=medium
+
+  * Improved build process
+  * Added support for Modelica language
+  * CodeMirror updated to version 4.6
+  * Find: restart from beginning when the end of document is reached
+  * Implemented "Show tabs" option
+  * Implemented documents conversion to all supported encodings
+  * UI glitch: fix cursor when the editor is smaller than the window
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 05 Oct 2014 15:05:13 +0200
+
 notepadqq (0.36.0-1~trusty1) trusty; urgency=medium
 
   * Bug fixes
