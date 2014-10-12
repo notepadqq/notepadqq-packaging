@@ -1,3 +1,11 @@
+notepadqq (0.38.0-1~trusty1) trusty; urgency=medium
+
+  * Support for Qt5.3 installed in /opt/Qt
+  * Custom, per-document, indentation settings
+  * New icon
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 12 Oct 2014 12:04:35 +0200
+
 notepadqq (0.37.1-1~trusty1) trusty; urgency=medium
 
   * Build issues
