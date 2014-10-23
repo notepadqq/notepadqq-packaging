@@ -11,19 +11,22 @@ TMP_DIR="$SCRIPTPATH"/tmp
 rm -rf "$TMP_DIR"
 mkdir "$TMP_DIR"
 
-# Get the source code
-git clone https://github.com/notepadqq/notepadqq.git "$TMP_DIR"/notepadqq-$PKG_VERSION
-cd "$TMP_DIR"/notepadqq-$PKG_VERSION
+cd "$TMP_DIR"
 
-# Create source "orig" tarball
+# Get the source code tarball
 REVISION=v$PKG_VERSION
 echo
 read -p "What commit/branch/tag do you want to package? [$REVISION] " input
 REVISION="${input:-$REVISION}"
-git checkout $REVISION || exit # Needed for branches that are not tracked by default
-git submodule init
-git submodule update
-git archive $REVISION | bzip2 > ../notepadqq_$PKG_VERSION.orig.tar.bz2
+../utils/get-source-tarball.sh "$REVISION" "notepadqq_$PKG_VERSION.orig.tar" || exit
+
+# Compress tarball
+bzip2 notepadqq_$PKG_VERSION.orig.tar
+
+# Extract tarball and move to the source directory
+mkdir notepadqq-$PKG_VERSION
+cd notepadqq-$PKG_VERSION
+tar -xpf ../notepadqq_$PKG_VERSION.orig.tar.bz2
 
 # Copy debian directory
 cp -r "$SCRIPTPATH"/debian "$TMP_DIR"/notepadqq-$PKG_VERSION/debian
@@ -40,6 +43,7 @@ debuild -S || exit
 
 echo
 echo "Package created in: $TMP_DIR/"
+cd "$TMP_DIR"
 
 # Copy the modified debian folder to the git repository
 read -p "Do you want to update the debian folder with your latest changes? (Y/n) " updatedebian
