@@ -1,3 +1,12 @@
+notepadqq (0.39.0-1~trusty1) trusty; urgency=medium
+
+  * More extensions recognized
+  * Textile and Tornado languages
+  * Completed encoding menu entries ('Reload file encoded as', 'Reinterpret as')
+  * CodeMirror updated to v4.7.0
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Wed, 22 Oct 2014 10:59:59 +0200
+
 notepadqq (0.38.0-1~trusty1) trusty; urgency=medium
 
   * Support for Qt5.3 installed in /opt/Qt
