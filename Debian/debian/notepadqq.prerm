@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+deconfigure|remove)
+
+    update-alternatives --remove notepadqq \
+    /usr/share/notepadqq/notepadqq.sh
+
+    update-alternatives --remove nqq \
+    /usr/share/notepadqq/notepadqq.sh
+
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
