@@ -25,7 +25,7 @@ Description: Notepad++-like editor for Linux
 Package: notepadqq-gtk
 Architecture: all
 Depends:
-   notepadqq (>= 0.40.0~),
+   notepadqq (= ${binary:Version}),
    ${misc:Depends}
 Description: Notepad++-like editor for Linux - GTK style
  Text editor with support for multiple programming
