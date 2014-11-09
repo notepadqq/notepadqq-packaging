@@ -7,23 +7,13 @@ override_dh_auto_clean:
 	dh_auto_clean
 	rm -rf out
 
-override_dh_auto_configure:
-	mv configure xconfigure
-	dh_auto_configure
-	mv xconfigure configure
-
 override_dh_auto_install:
 	dh_auto_install --destdir=$(CURDIR)/debian/tmp
 
 override_dh_install:
 	dh_install -XLICENSE -XAUTHORS -X.md
-
-	cd debian/notepadqq/usr/share/notepadqq && \
-	mv notepadqq notepadqq.sh
-
-	cd debian/notepadqq-gtk/usr/share/notepadqq-gtk && \
-	mv notepadqq notepadqq-gtk.sh && \
-	sed -i 's/notepadqq-bin "$$@"/notepadqq-bin -style=gtk "$$@"/g' notepadqq-gtk.sh
+	install -m755 debian/tmp/usr/bin/notepadqq \
+	$(CURDIR)/debian/notepadqq/usr/lib/notepadqq.sh
 
 override_dh_installdocs:
 	dh_installdocs --link-doc=notepadqq-common

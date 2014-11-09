@@ -5,11 +5,7 @@ set -e
 case "$1" in
 deconfigure|remove)
 
-    update-alternatives --remove notepadqq \
-    /usr/share/notepadqq-gtk/notepadqq-gtk.sh
-
-    update-alternatives --remove nqq \
-    /usr/share/notepadqq-gtk/notepadqq-gtk.sh
+    update-alternatives --remove notepadqq /usr/lib/notepadqq-gtk.sh
 
     ;;
 esac

@@ -8,7 +8,7 @@ configure)
     update-alternatives \
     --install \
         /usr/bin/notepadqq notepadqq \
-        /usr/share/notepadqq/notepadqq.sh 50
+        /usr/lib/notepadqq.sh 50
 
     ;;
 esac
