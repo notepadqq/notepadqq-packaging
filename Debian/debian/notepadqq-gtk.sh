@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/lib/notepadqq.sh -style=gtk "$@"
+/usr/lib/notepadqq/notepadqq.sh -style=gtk "$@"
