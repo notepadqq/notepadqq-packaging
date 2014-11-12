@@ -13,7 +13,7 @@ override_dh_auto_install:
 override_dh_install:
 	dh_install -XLICENSE -XAUTHORS -X.md
 	install -m755 debian/tmp/usr/bin/notepadqq \
-	$(CURDIR)/debian/notepadqq/usr/lib/notepadqq.sh
+	$(CURDIR)/debian/notepadqq/usr/lib/notepadqq/notepadqq.sh
 
 override_dh_installdocs:
 	dh_installdocs --link-doc=notepadqq-common
