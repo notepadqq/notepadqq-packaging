@@ -32,7 +32,7 @@ Description: Notepad++-like editor for Linux - GTK style
  languages, multiple encodings and plugin support.
  .
  This package enables GTK style on startup. The application
- it self is still compiled against Qt5.
+ itself is still compiled against Qt5.
 
 Package: notepadqq-common
 Architecture: all
