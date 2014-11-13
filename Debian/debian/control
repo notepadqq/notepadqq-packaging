@@ -15,7 +15,8 @@ Vcs-Browser: https://github.com/notepadqq/notepadqq
 Package: notepadqq
 Architecture: any
 Depends:
-   notepadqq-common (= ${source:Version}),
+   notepadqq-common (>= ${source:Version}),
+   notepadqq-common (<< ${source:Version}.1~),
    coreutils (>= 8.20),
    ${shlibs:Depends},
    ${misc:Depends}
