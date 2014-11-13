@@ -8,7 +8,7 @@ configure)
     update-alternatives \
     --install \
         /usr/bin/notepadqq notepadqq \
-        /usr/lib/notepadqq-gtk.sh 100
+        /usr/lib/notepadqq/notepadqq-gtk.sh 100
 
     ;;
 esac
