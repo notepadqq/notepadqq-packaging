@@ -1,3 +1,0 @@
-# /usr/bin/notepadqq is provided by update-alternatives
-notepadqq: desktop-command-not-in-package usr/share/applications/notepadqq.desktop notepadqq
-
