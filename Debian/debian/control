@@ -40,6 +40,8 @@ Package: notepadqq-common
 Architecture: all
 Depends:
    ${misc:Depends}
+Replaces: notepadqq (<< 0.40.0)
+Breaks: notepadqq (<< 0.40.0)
 Recommends:
  notepadqq
 Description: Notepad++-like editor for Linux - common files
