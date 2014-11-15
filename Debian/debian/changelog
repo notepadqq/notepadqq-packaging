@@ -1,3 +1,9 @@
+notepadqq (0.40.1-0~utopic1) utopic; urgency=medium
+
+  * Fix opening relative paths from other instances
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 15 Nov 2014 01:16:34 +0100
+
 notepadqq (0.40.0-0~utopic7) utopic; urgency=medium
 
   * Bug fixes
