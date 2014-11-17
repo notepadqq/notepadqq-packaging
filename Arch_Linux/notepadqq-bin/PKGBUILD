@@ -9,7 +9,7 @@ pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 license=('GPL3')
-depends=('qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils' 'coreutils>=8.20' 'qt5-svg')
 makedepends=('')
 options=('!strip')
 provides=("notepadqq=${pkgver}")
