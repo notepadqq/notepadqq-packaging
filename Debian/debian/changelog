@@ -1,3 +1,15 @@
+notepadqq (0.41.0-0~utopic1) utopic; urgency=medium
+
+  * Bug fixes
+  * New command line option --new-window to open files in a new window
+  * Added desktop file actions on Unity (Open a new window, Open a new document)
+  * Perl, Python, Bash and sh shebangs are now recognized automatically
+  * CodeMirror updated to v4.8.0
+  * Open new documents by double clicking on the tab bar
+  * Search-as-I-type feature implemented (user can disable it from settings)
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Fri, 28 Nov 2014 09:39:54 +0100
+
 notepadqq (0.40.1-0~utopic1) utopic; urgency=medium
 
   * Fix opening relative paths from other instances
