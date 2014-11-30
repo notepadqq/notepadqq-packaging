@@ -18,6 +18,7 @@ Depends:
    notepadqq-common (>= ${source:Version}),
    notepadqq-common (<< ${source:Version}.1~),
    coreutils (>= 8.20),
+   libqt5svg5 (>= 5.2.1),
    ${shlibs:Depends},
    ${misc:Depends}
 Description: Notepad++-like editor for Linux
