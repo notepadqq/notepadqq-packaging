@@ -2,13 +2,11 @@ Distribution Packages
 ---------------------
 
 #### Ubuntu (official packages)
-Notepadqq is available in an [official PPA](https://launchpad.net/~notepadqq-team/+archive/ubuntu/notepadqq):
+Notepadqq is available from an [official PPA](https://launchpad.net/~notepadqq-team/+archive/ubuntu/notepadqq):
 
-```bash
-sudo add-apt-repository ppa:notepadqq-team/notepadqq
-sudo apt-get update
-sudo apt-get install notepadqq
-```
+    sudo add-apt-repository ppa:notepadqq-team/notepadqq
+    sudo apt-get update
+    sudo apt-get install notepadqq
 
 #### Debian (official packages)
 Download a deb package from the Ubuntu PPA: [download](https://launchpad.net/~notepadqq-team/+archive/ubuntu/notepadqq/+packages)

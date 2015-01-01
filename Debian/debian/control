@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Daniele Di Sarli <danieleds0@gmail.com>
 Build-Depends:
    debhelper (>= 9),
-   qt5-default (>= 5.2.1),
+   qtbase5-dev (>= 5.2.1),
    libqt5webkit5-dev (>= 5.1.1),
    libqt5svg5-dev (>= 5.2.1)
 Standards-Version: 3.9.5
@@ -15,8 +15,40 @@ Vcs-Browser: https://github.com/notepadqq/notepadqq
 Package: notepadqq
 Architecture: any
 Depends:
+   notepadqq-common (>= ${source:Version}),
+   notepadqq-common (<< ${source:Version}.1~),
+   coreutils (>= 8.20),
+   libqt5svg5 (>= 5.2.1),
    ${shlibs:Depends},
    ${misc:Depends}
 Description: Notepad++-like editor for Linux
  Text editor with support for multiple programming
  languages, multiple encodings and plugin support.
+
+Package: notepadqq-gtk
+Architecture: all
+Depends:
+   notepadqq (>= ${binary:Version}),
+   notepadqq (<< ${binary:Version}.1~),
+   ${misc:Depends}
+Description: Notepad++-like editor for Linux - GTK style
+ Text editor with support for multiple programming
+ languages, multiple encodings and plugin support.
+ .
+ This package enables GTK style on startup. The application
+ itself is still compiled against Qt5.
+
+Package: notepadqq-common
+Architecture: all
+Depends:
+   ${misc:Depends}
+Replaces: notepadqq (<= 0.39.0)
+Breaks: notepadqq (<= 0.39.0)
+Recommends:
+ notepadqq
+Description: Notepad++-like editor for Linux - common files
+ Text editor with support for multiple programming
+ languages, multiple encodings and plugin support.
+ .
+ This package will install the common files for Notepadqq.
+

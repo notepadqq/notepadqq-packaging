@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export QT_SELECT=qt5
+
 %:
 	dh ${@} --parallel
 
@@ -12,6 +14,11 @@ override_dh_auto_install:
 
 override_dh_install:
 	dh_install -XLICENSE -XAUTHORS -X.md
+	install -m755 debian/tmp/usr/bin/notepadqq \
+	$(CURDIR)/debian/notepadqq/usr/lib/notepadqq/notepadqq.sh
+
+override_dh_installdocs:
+	dh_installdocs --link-doc=notepadqq-common
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz -z9
