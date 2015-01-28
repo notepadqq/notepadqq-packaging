@@ -1,3 +1,39 @@
+notepadqq (0.41.0-0~utopic1) utopic; urgency=medium
+
+  * Bug fixes
+  * New command line option --new-window to open files in a new window
+  * Added desktop file actions on Unity (Open a new window, Open a new document)
+  * Perl, Python, Bash and sh shebangs are now recognized automatically
+  * CodeMirror updated to v4.8.0
+  * Open new documents by double clicking on the tab bar
+  * Search-as-I-type feature implemented (user can disable it from settings)
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Fri, 28 Nov 2014 09:39:54 +0100
+
+notepadqq (0.40.1-0~utopic1) utopic; urgency=medium
+
+  * Fix opening relative paths from other instances
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 15 Nov 2014 01:16:34 +0100
+
+notepadqq (0.40.0-0~utopic7) utopic; urgency=medium
+
+  * Bug fixes
+  * Quick Run entries
+  * Language Hints
+  * Support for single instance, with interaction between windows
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Fri, 14 Nov 2014 15:33:32 +0100
+
+notepadqq (0.39.0-1~trusty1) trusty; urgency=medium
+
+  * More extensions recognized
+  * Textile and Tornado languages
+  * Completed encoding menu entries ('Reload file encoded as', 'Reinterpret as')
+  * CodeMirror updated to v4.7.0
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Wed, 22 Oct 2014 10:59:59 +0200
+
 notepadqq (0.38.0-1~trusty1) trusty; urgency=medium
 
   * Support for Qt5.3 installed in /opt/Qt
