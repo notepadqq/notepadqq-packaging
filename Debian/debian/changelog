@@ -1,3 +1,16 @@
+notepadqq (0.44.0-0~utopic1) utopic; urgency=medium
+
+  * Close tabs with middle click
+  * Implemented 'Find in files'
+  * Fixed keyboard shortcuts
+  * CodeMirror updated to v4.12.0
+  * Allow to duplicate or delete the current line
+  * Implemented 7 blank operations
+  * ZenBurn theme
+  * New languages
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 14 Feb 2015 12:40:08 +0100
+
 notepadqq (0.41.1-0~utopic1) utopic; urgency=medium
 
   * Misc fixes
