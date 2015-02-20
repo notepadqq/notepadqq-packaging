@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Build NotepadQQ package for and on a Fedora or RedHat based system
 # (c) SA, 2014-2015 by Simon Arjuna Erat (sea), erat DOT simon AT gmail D0T (0M
 # --------------------------------------------------
 #
 # 	Are you root or what?
 #
-	#[[ ! 0 -eq $UID ]] && printf '%s\n' "$ME: Requires root access!" && exit 1
+	#[ ! 0 -eq $UID ] && printf '%s\n' "$ME: Requires root access!" && exit 1
 	
 #	
 #	Variables
@@ -27,12 +27,12 @@
 	OPT=""					# What kind of package to build? -- Will be asked!
 	
 	# Check for existing temp dir
-	for td in "$HOME/.cache" "$HOME/.local/cache" /var/cache /var/tmp;do [[ -d "$td" ]] && break;done
+	for td in "$HOME/.cache" "$HOME/.local/cache" /var/cache /var/tmp;do [ -d "$td" ] && break;done
 	APP_DIR="$td/$APP"
 	
 	# Retrieve the versionnumber from the specfile
 	VER=$(grep -i "version:" "$SPEC"|awk '{print $2}')
-	[[ -z "$VER" ]] && exit 1		# Exit with failure if VER is empty
+	[ -z "$VER" ] && exit 1		# Exit with failure if VER is empty
 	TARBALL="$SOURCES_DIR/$APP-$VER.tar.gz"	# Location of the tarball
 #
 #	Environment
@@ -40,8 +40,8 @@
 	# Verify applications are intalled
 	echo "Installing required packages to build the package"
 	for req in $LIST_APPS_REQUIRED;do printf "\rChecking: $req..." ; which $req 2>/dev/zero 1>/dev/zero && printf "good.\n"|| to_install+=" $req";done
-	echo $to_install
-	[[ -z "$to_install" ]] || yum install -y $to_install 2>/dev/zero 1>/dev/zero
+	echo "Missing: $to_install"
+	[ -z "$to_install" ] || sudo yum install -y $to_install 2>/dev/zero 1>/dev/zero
 #
 #	Display & Action
 #
@@ -49,8 +49,8 @@
 	rpmdev-setuptree
 	
 	# Clean previous data
-	[[ -d "$APP_DIR" ]] 	&& rm -fr "$APP_DIR"
-	[[ -d "$OUTPUT_DIR" ]] 	&& rm -fr "$OUTPUT_DIR"
+	[ -d "$APP_DIR" ] 	&& rm -fr "$APP_DIR"
+	[ -d "$OUTPUT_DIR" ] 	&& rm -fr "$OUTPUT_DIR"
 	mkdir -p "$OUTPUT_DIR"
 	
 	# Retrieve raw code
@@ -60,8 +60,8 @@
 	cd "$APP_DIR/.."
 	tar -acf "$TARBALL" "$APP" && rm -fr "$APP_DIR"
 	cd "$ME_DIR"
-	cp $PATCH "$SOURCES_DIR"
-	cp $SPEC "$SPECS_DIR"
+	cp "$PATCH" "$SOURCES_DIR"
+	cp "$SPEC" "$SPECS_DIR"
 	
 	# Which packages to build?
 	echo "Please select which packages to build:"
@@ -81,7 +81,9 @@
 	echo "Start building $menu...."
 	export LC_ALL=C	# Make sure the output to parse is english
 	#list=$(rpmbuild -$OPT "$SPEC" 2>/dev/zero |grep "Wrote:"|awk '{print $2}')
-	rpmbuild -$OPT "$SPEC"  |grep "Wrote:"|awk '{print $2}' | while read tFile;do list+=" $tFile";done
+	rpmbuild -$OPT "$SPEC"  #|grep "Wrote:"|awk '{print $2}' | while read tFile;do list+=" $tFile";done
+	cd ~/rpmbuild
+	list=$(find|grep  \\.rpm$)
 	
 	# Collect data to output dir
 	
