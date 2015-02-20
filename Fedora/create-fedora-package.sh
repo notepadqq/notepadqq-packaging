@@ -81,7 +81,7 @@
 	echo "Start building $menu...."
 	export LC_ALL=C	# Make sure the output to parse is english
 	#list=$(rpmbuild -$OPT "$SPEC" 2>/dev/zero |grep "Wrote:"|awk '{print $2}')
-	rpmbuild -$OPT "$SPEC"  |grep "Wrote:"|awk '{print $2}') | while read tFile;do list+=" $tFile";done
+	rpmbuild -$OPT "$SPEC"  |grep "Wrote:"|awk '{print $2}' | while read tFile;do list+=" $tFile";done
 	
 	# Collect data to output dir
 	
