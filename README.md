@@ -30,7 +30,8 @@ If you would like to compile/package yourself, get this git code and run:
 	su
 	cd Fedora
 	create-fedora-package.sh
-	yum install ./notepadqq*
+	cd ~/notepadqq
+	yum install ./notepadqq*[46].rpm
 
 #### Others
 Use a package for a compatible distribution, or build from [source](https://github.com/notepadqq/notepadqq.git).
