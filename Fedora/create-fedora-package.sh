@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build NotepadQQ package for and on a Fedora or RedHat based system
-# (c) SA, 2014-2015 by Simon Arjuna Erat (sea), erat DOT simon AT gmail D0T (0M
+# (c) CCSA, 2014-2015 by Simon Arjuna Erat (sea), erat DOT simon AT gmail D0T (0M
 # --------------------------------------------------
 #
 # 	Are you root or what?
@@ -32,19 +32,27 @@
 	
 	# Retrieve the versionnumber from the specfile
 	VER=$(grep -i "version:" "$SPEC"|awk '{print $2}')
-	[ -z "$VER" ] && exit 1		# Exit with failure if VER is empty
+	[ -z "$VER" ] && exit 1			# Exit with failure if VER is empty
 	TARBALL="$SOURCES_DIR/$APP-$VER.tar.gz"	# Location of the tarball
 #
 #	Environment
 #
 	# Verify applications are intalled
 	echo "Installing required packages to build the package"
-	for req in $LIST_APPS_REQUIRED;do printf "\rChecking: $req..." ; which $req 2>/dev/zero 1>/dev/zero && printf "good.\n"|| to_install+=" $req";done
-	echo "Missing: $to_install"
+	for req in $LIST_APPS_REQUIRED;do 
+		printf "\rChecking: $req..."
+		if rpm -qa $req 2>/dev/zero 1>/dev/zero
+		then 	printf "good.\n"
+		else	printf "missing.\n"
+			to_install+=" $req"
+		fi
+	done
+	[ -z "$to_install" ] || echo "Missing: $to_install"
 	[ -z "$to_install" ] || sudo yum install -y $to_install 2>/dev/zero 1>/dev/zero
 #
 #	Display & Action
 #
+	echo
 	echo "Creating a RPM package for $APP."
 	rpmdev-setuptree
 	
@@ -54,9 +62,12 @@
 	mkdir -p "$OUTPUT_DIR"
 	
 	# Retrieve raw code
-	git clone "$URL" "$APP_DIR" 2>/dev/zero
+	echo "Downloading code"
+	git clone "$URL" "$APP_DIR" #2>/dev/zero
 	
 	# Prepare sources for build
+	echo
+	echo "Prepare files to build package..."
 	cd "$APP_DIR/.."
 	tar -acf "$TARBALL" "$APP" && rm -fr "$APP_DIR"
 	cd "$ME_DIR"
@@ -64,37 +75,47 @@
 	cp "$SPEC" "$SPECS_DIR"
 	
 	# Which packages to build?
+	echo
 	echo "Please select which packages to build:"
 	MENU=( "All available" "Binary only" "Sources only" )
 	select menu in "${MENU[@]}";do
 		case "$menu" in
 		"${MENU[0]}")	OPT=ba	;;
-		"${MENU[0]}")	OPT=bb	;;
-		"${MENU[0]}")	OPT=bs	;;
+		"${MENU[1]}")	OPT=bb	;;
+		"${MENU[2]}")	OPT=bs	;;
 		esac
 		break
 	done
 	
 	# Build it
 	cd "$SPECS_DIR/.."
-	#cd "$OUTPUT_DIR"
+	echo
 	echo "Start building $menu...."
-	export LC_ALL=C	# Make sure the output to parse is english
-	#list=$(rpmbuild -$OPT "$SPEC" 2>/dev/zero |grep "Wrote:"|awk '{print $2}')
-	rpmbuild -$OPT "$SPEC"  #|grep "Wrote:"|awk '{print $2}' | while read tFile;do list+=" $tFile";done
-	cd ~/rpmbuild
-	list=$(find|grep  \\.rpm$)
+	rpmbuild -$OPT "$SPEC"
+	if [ $? -eq 0 ]
+	then	# Update relase upon successfull build
+		rel=$(grep -i "release:" "$SPEC"|awk '{print $2}')
+		num=${rel/\%*/}
+		other=${rel/*\%/}
+		num=$((num+1))
+		sed s,"$rel","$num%$other",g -i "$SPEC"
+	fi
 	
 	# Collect data to output dir
-	
+	cd ~/rpmbuild
+	echo
+	echo "Moving files to $OUTPUT_DIR"
+	list=$(find|grep  \\.rpm$)
 	list+=" $SPEC"
 	list+=" $TARBALL"
+	printf "Copying files: "
 	for L in $list;do
-		if [[ -f "$L" ]]
-		then	echo "Moving: $L"
+		if [ -f "$L" ]
+		then	printf "."
 			cp "$L" "$OUTPUT_DIR"
 		fi
 	done
+	printf "\n"
 	
 	# Present the output
 	cd "$OUTPUT_DIR"
