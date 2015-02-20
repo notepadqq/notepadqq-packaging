@@ -17,6 +17,21 @@ You can install different versions of the package from AUR:
  * Stable (pre-built Debian package): [notepadqq-bin](https://aur.archlinux.org/packages/notepadqq-bin/)
  * Development (git version): [notepadqq-git](https://aur.archlinux.org/packages/notepadqq-git/)
 
+#### Fedora / RHEL
+Notepadqq is available from a [testing-repositry](http://sea.fedorapeople.org/sea-devel.repo)
+
+	su
+	cd /etc/yum.repos.d
+	wget http://sea.fedorapeople.org/sea-devel.repo
+	yum install notepadqq
+
+If you would like to compile/package yourself, get this git code and run:
+
+	su
+	cd Fedora
+	create-fedora-package.sh
+	yum install ./notepadqq*
+
 #### Others
 Use a package for a compatible distribution, or build from [source](https://github.com/notepadqq/notepadqq.git).
 If you want to submit a package: https://github.com/notepadqq/notepadqq-packaging

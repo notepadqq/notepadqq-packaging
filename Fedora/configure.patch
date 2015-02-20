@@ -1,0 +1,11 @@
+--- configure
++++ configure
+@@ -4,7 +4,7 @@
+ # --qmake-path <path>
+ # --prefix <prefix>
+ 
+-QMAKE_PATH=qmake
++QMAKE_PATH=qmake-qt5
+ 
+ while [ "$#" -ge 1 ]
+ do
