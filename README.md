@@ -21,6 +21,7 @@ You can install different versions of the package from AUR:
 Notepadqq is available from a [testing-repositry](http://sea.fedorapeople.org/sea-devel.repo)
 
 	su
+	cd /etc/yum.repos.d
 	wget http://sea.fedorapeople.org/sea-devel.repo
 	yum install notepadqq
 
