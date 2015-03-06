@@ -9,9 +9,6 @@ override_dh_auto_clean:
 	dh_auto_clean
 	rm -rf out
 
-override_dh_auto_install:
-	dh_auto_install --destdir=$(CURDIR)/debian/tmp
-
 override_dh_install:
 	dh_install -XLICENSE -XAUTHORS -X.md
 	install -m755 debian/tmp/usr/bin/notepadqq \
@@ -20,5 +17,3 @@ override_dh_install:
 override_dh_installdocs:
 	dh_installdocs --link-doc=notepadqq-common
 
-override_dh_builddeb:
-	dh_builddeb -- -Zxz -z9
