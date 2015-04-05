@@ -3,7 +3,10 @@ cd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd -P`
 cd - > /dev/null
 
-read -p "Notepadqq version (e.g. 0.13.9): " PKG_VERSION
+PKG_VERSION_DEB=$(head -n1 debian/changelog | sed 's/notepadqq (//' | cut -d- -f1)
+
+read -p "Notepadqq version [$PKG_VERSION_DEB]: " PKG_VERSION
+test -z $PKG_VERSION && PKG_VERSION=$PKG_VERSION_DEB || true
 
 TMP_DIR="$SCRIPTPATH"/tmp
 
