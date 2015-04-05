@@ -1,3 +1,21 @@
+notepadqq (0.46.0-0~utopic1) utopic; urgency=medium
+
+  * New languages: m4, forth, PGP (ASCII armor), Troff, CMake
+  * Improved language recognition
+  * CodeMirror updated to v5.1.0
+  * Implemented an "Open folder" menu
+  * Implemented a "Go to line..." menu
+  * Assigned a name to the toolbar
+  * Implemented search histories
+  * Introduced an option to turn off indent warning
+  * Consider "Replace All" as a single undo event
+  * Fix PNG color profiles
+  * Do not show indentation warning when the document is reloaded
+  * Set default search text to the current selection
+  * Folder chooser dialog for search in files now defaults to the current editor path
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 05 Apr 2015 11:50:12 +0200
+
 notepadqq (0.45.1-0~utopic1) utopic; urgency=medium
 
   * Search-in-files fixes
