@@ -1,0 +1,9 @@
+[submodule "Arch_Linux/notepadqq-bin"]
+	path = Arch_Linux/notepadqq-bin
+	url = ssh+https://aur@aur4.archlinux.org/notepadqq-bin.git
+[submodule "Arch_Linux/notepadqq-git"]
+	path = Arch_Linux/notepadqq-git
+	url = ssh+https://aur@aur4.archlinux.org/notepadqq-git.git
+[submodule "Arch_Linux/notepadqq-common"]
+	path = Arch_Linux/notepadqq-common
+	url = ssh+https://aur@aur4.archlinux.org/notepadqq-common.git
