@@ -1,3 +1,12 @@
+notepadqq (0.50.0-0~trusty1) trusty; urgency=medium
+
+  * New modes: Mathematica, ASN.1, TTCN, TTCN-CFG, MUMPS
+  * Experimental support for extensions
+  * UI fixes in Preferences Dialog
+  * Misc bug fixes
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 27 Jun 2015 20:03:22 +0200
+
 notepadqq (0.46.2-0~vivid1) vivid; urgency=medium
 
   * Improved look and usability of the intentation dialog
