@@ -1,4 +1,4 @@
-notepadqq (0.50.0-0~trusty1) trusty; urgency=medium
+notepadqq (0.50.0-0~vivid1) vivid; urgency=medium
 
   * New modes: Mathematica, ASN.1, TTCN, TTCN-CFG, MUMPS
   * Experimental support for extensions
