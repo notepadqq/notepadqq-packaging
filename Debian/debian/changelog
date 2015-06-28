@@ -1,3 +1,9 @@
+notepadqq (0.50.1-0~vivid1) vivid; urgency=medium
+
+  * Bugfix
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 27 Jun 2015 21:17:12 +0200
+
 notepadqq (0.50.0-0~vivid1) vivid; urgency=medium
 
   * New modes: Mathematica, ASN.1, TTCN, TTCN-CFG, MUMPS
