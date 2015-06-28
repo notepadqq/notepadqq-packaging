@@ -1,2 +1,5 @@
-# no point to build it from source
+# no point to build them from source
 notepadqq source: source-is-missing src/editor/libs/jquery/jquery.min.js
+notepadqq source: source-is-missing doc/api/theme/js/modernizr-2.8.3.min.js
+notepadqq source: source-is-missing doc/api/theme/js/jquery-2.1.1.min.js
+notepadqq source: source-is-missing doc/api/theme/js/highlight.pack.js
