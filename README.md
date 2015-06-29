@@ -14,8 +14,8 @@ Download a deb package from the Ubuntu PPA: [download](https://launchpad.net/~no
 #### Arch Linux
 You can install different versions of the package from AUR:
 
- * Stable (pre-built Debian package): [notepadqq-bin](https://aur.archlinux.org/packages/notepadqq-bin/)
- * Development (git version): [notepadqq-git](https://aur.archlinux.org/packages/notepadqq-git/)
+ * Stable (pre-built Debian package): [notepadqq-bin](https://aur4.archlinux.org/packages/notepadqq-bin/)
+ * Development (git version): [notepadqq-git](https://aur4.archlinux.org/packages/notepadqq-git/)
 
 #### Fedora / RHEL
 Notepadqq is available from a [testing-repositry](http://sea.fedorapeople.org/sea-devel.repo)
