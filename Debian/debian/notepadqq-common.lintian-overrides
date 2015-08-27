@@ -1,3 +1,6 @@
-# jquery in the repositories is outdated
+# we use newer versions than those in the repositories
 notepadqq-common binary: embedded-javascript-library usr/share/notepadqq/editor/libs/jquery/jquery.min.js*
+notepadqq-common binary: embedded-javascript-library usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/async/lib/async.js*
 
+# unusual, but required
+notepadqq-common binary: unusual-interpreter usr/share/notepadqq/extension_tools/node_modules/shelljs/bin/shjs #!node

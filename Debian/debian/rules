@@ -3,6 +3,7 @@
 export LDFLAGS=$(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 export QT_SELECT=qt5
 
+EXTDIR=debian/tmp/usr/share/notepadqq/extension_tools/node_modules
 
 %:
 	dh ${@} --parallel
@@ -12,9 +13,11 @@ override_dh_auto_clean:
 	rm -rf out
 
 override_dh_install:
-	dh_install -XLICENSE -XAUTHORS -X.md
+	rm -rf `find $(EXTDIR) -type d -name test*` \
+		$(EXTDIR)/archiver/node_modules/async/support $(EXTDIR)/shelljs/scripts
+	dh_install -XLICENCE -XAUTHORS -X.md
 	install -m755 debian/tmp/usr/bin/notepadqq \
-	$(CURDIR)/debian/notepadqq/usr/lib/notepadqq/notepadqq.sh
+		$(CURDIR)/debian/notepadqq/usr/lib/notepadqq/notepadqq.sh
 
 override_dh_installdocs:
 	dh_installdocs --link-doc=notepadqq-common
