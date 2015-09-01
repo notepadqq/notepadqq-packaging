@@ -15,7 +15,7 @@ override_dh_auto_clean:
 override_dh_install:
 	rm -rf `find $(EXTDIR) -type d -name test*` \
 		$(EXTDIR)/archiver/node_modules/async/support $(EXTDIR)/shelljs/scripts
-	dh_install -XLICENCE -XAUTHORS -X.md
+	dh_install -XLICENCE -XLICENSE -XAUTHORS -X.md
 	install -m755 debian/tmp/usr/bin/notepadqq \
 		$(CURDIR)/debian/notepadqq/usr/lib/notepadqq/notepadqq.sh
 
