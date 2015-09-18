@@ -1,17 +1,17 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+#Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: notepadqq
 Upstream-Contact: Daniele Di Sarli <danieleds0@gmail.com>
 Source: http://notepadqq.altervista.org/
 
 Files: *
 Copyright:
-  2010-2014, Daniele Di Sarli <danieleds0@gmail.com>
+  2010-2015, Daniele Di Sarli <danieleds0@gmail.com>
 License: GPL-3+
 
 Files: debian/*
 Copyright:
-  2011-2014, Daniele Di Sarli <danieleds0@gmail.com>
-  2014, djcj <djcj@gmx.de>
+  2011-2015, Daniele Di Sarli <danieleds0@gmail.com>
+  2014-2015, djcj <djcj@gmx.de>
 License: GPL-3+
 
 License: GPL-3+

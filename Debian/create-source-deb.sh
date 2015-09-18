@@ -34,6 +34,20 @@ tar -xpf ../notepadqq_$PKG_VERSION.orig.tar.bz2
 # Copy debian directory
 cp -r "$SCRIPTPATH"/debian "$TMP_DIR"/notepadqq-$PKG_VERSION/debian
 
+# Generate debian/copyright
+cd "$TMP_DIR"/notepadqq-$PKG_VERSION
+cat debian/copyright.in > debian/copyright
+for f in `find src/extension_tools -name LICEN?E`; do
+  cat <<EOF >> debian/copyright
+
+
+
+Files: `dirname $f`/*
+
+EOF
+  cat $f >> debian/copyright
+done
+
 echo
 echo
 echo "Upstream source code downloaded and ready in:"
