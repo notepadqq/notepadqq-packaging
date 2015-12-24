@@ -1,3 +1,17 @@
+notepadqq (0.50.6-0~wily1) wily; urgency=medium
+
+  * Support for translations
+  * New icon
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Thu, 24 Dec 2015 22:26:10 +0100
+
+notepadqq (0.50.4-0~vivid1) vivid; urgency=medium
+
+  * Full screen
+  * UI fixes
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Fri, 18 Sep 2015 17:25:02 +0200
+
 notepadqq (0.50.2-0~vivid1) vivid; urgency=medium
 
   * Support for Qt 5.5
