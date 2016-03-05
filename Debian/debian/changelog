@@ -1,3 +1,16 @@
+notepadqq (0.51.0-0~xenial1) xenial; urgency=medium
+
+  * Always use tabSize from the preferences when converting tabs to spaces
+  * Keyboard shortcuts compatibility with translations
+  * HU localization
+  * Fix casing bug for search dialog
+  * Shift+Insert to paste
+  * Ctrl+Insert to copy
+  * Identify TCL scripts by shebang
+  * Recognize more Fortran extensions
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sat, 05 Mar 2016 19:58:51 +0100
+
 notepadqq (0.50.6-0~wily1) wily; urgency=medium
 
   * Support for translations
