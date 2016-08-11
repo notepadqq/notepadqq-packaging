@@ -3,3 +3,20 @@ notepadqq source: source-is-missing src/editor/libs/jquery/jquery.min.js
 notepadqq source: source-is-missing doc/api/theme/js/modernizr-2.8.3.min.js
 notepadqq source: source-is-missing doc/api/theme/js/jquery-2.1.1.min.js
 notepadqq source: source-is-missing doc/api/theme/js/highlight.pack.js
+notepadqq source: source-is-missing src/editor/libs/codemirror/addon/hint/html-hint.js line length is 577 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/cypher/cypher.js line length is 714 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/ecl/ecl.js line length is 1006 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/gfm/gfm.js line length is 1157 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/gherkin/gherkin.js line length is 1153 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/mumps/mumps.js line length is 682 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/nginx/nginx.js line length is 5103 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/nsis/nsis.js line length is 2409 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/php/php.js line length is 9282 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/q/q.js line length is 1247 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/sas/sas.js line length is 528 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/scheme/scheme.js line length is 2179 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/sql/sql.js line length is 3058 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/stylus/stylus.js line length is 860 characters (>512)
+notepadqq source: source-is-missing src/editor/libs/codemirror/mode/xquery/test.js line length is 318 characters (>256)
+notepadqq source: source-is-missing src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/browser.js line length is 480 characters (>256)
+

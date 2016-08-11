@@ -1,3 +1,14 @@
+notepadqq (0.52.0-0~xenial1) xenial; urgency=medium
+
+  * Added Alt+digit, Ctrl+PageUp and Ctrl+PageDown shortcuts to switch between tabs
+  * Added ability to shift lines up/down
+  * Added localization switch within Preferences
+  * Added regex groups support for text replacement
+  * Russian localization
+  * Polish localization
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Fri, 12 Aug 2016 00:07:08 +0200
+
 notepadqq (0.51.0-0~xenial1) xenial; urgency=medium
 
   * Always use tabSize from the preferences when converting tabs to spaces
