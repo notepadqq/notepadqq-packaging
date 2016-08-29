@@ -1,3 +1,14 @@
+notepadqq (0.53.0-0~xenial1) xenial; urgency=medium
+
+  * Allow users to configure a custom font (and size) (e246e81)
+  * Support for showing tabs, spaces and end of line symbols (a4866d9)
+  * Fix regression regarding whitespaces and word-wrap (84048d8)
+  * Fix Zenburn theme not loading properly at startup (f761810)
+  * Fix left editor panel not updating when switching languages (01fae47)
+  * UI improvements for custom keyboard shortcuts (2f05245)
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Mon, 29 Aug 2016 21:38:32 +0200
+
 notepadqq (0.52.1-0~xenial1) xenial; urgency=medium
 
   * Fonts fix
