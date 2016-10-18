@@ -1,6 +1,6 @@
 Name:           notepadqq
-Version:        0.41.1
-Release:        19%{?dist}
+Version:        0.53.0
+Release:        20%{?dist}
 Summary:        A Linux clone of Notepad++
 
 License:        GPLv3
@@ -17,6 +17,7 @@ BuildRequires:  git
 BuildRequires:  qt5-qtsvg-devel
 BuildRequires:  qt5-qtwebkit-devel
 BuildRequires:  qt-creator
+BuildRequires:  qtchooser
 
 Requires:       qt5-qtwebkit
 Requires:       qt5-qtsvg
@@ -35,14 +36,14 @@ Features:
 %setup -q -c %{name}-%{version}
 cd %{name}
 #cd %{name}
-%patch0 -b configure
+#%patch0 -b configure
 
 
 %build
 cd %{name}
 #cd %{name}
 #sed s,"QMAKE_PATH=qmake","QMAKE_PATH=qmake-qt5",g -i configure
-%configure --prefix %{buildroot}/usr
+%configure --qmake=qmake-qt5 --prefix %{buildroot}/usr
 #cp -v ../../../SOURCES/cobalt-fedora.css src/editor/libs/codemirror/theme/
 make %{?_smp_mflags}
 
