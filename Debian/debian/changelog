@@ -1,3 +1,17 @@
+notepadqq (1.0.0-0~yakkety1) yakkety; urgency=medium
+
+  * Sessions
+  * Run menu
+  * Option to disable smart indentation
+  * Option to change line height
+  * Support special characters in replacement strings when searching
+  * Improved shortcut settings
+  * Speed improvements in search in files
+  * Use the system language as default language
+  * Swedish localization
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 05 Feb 2017 22:54:57 +0100
+
 notepadqq (0.53.0-0~xenial1) xenial; urgency=medium
 
   * Allow users to configure a custom font (and size) (e246e81)
