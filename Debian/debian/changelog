@@ -1,3 +1,9 @@
+notepadqq (1.0.1-0~yakkety1) yakkety; urgency=medium
+
+  * Fix: settings were not saved
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 05 Feb 2017 23:46:42 +0100
+
 notepadqq (1.0.0-0~yakkety1) yakkety; urgency=medium
 
   * Sessions
