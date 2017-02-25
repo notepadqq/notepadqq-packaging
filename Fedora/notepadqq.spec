@@ -1,17 +1,15 @@
 Name:			notepadqq
 Version:		1.0.1
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		A Linux clone of Notepad++
 
 License:		GPLv3
 URL:			https://github.com/notepadqq/notepadqq
-Source0:		%{name}-%{version}.tar.gz
-#CodeMirror submodule https://github.com/notepadqq/CodeMirror/archive/5.18.2-nqq.tar.gz
-Source1:		CodeMirror-5.18.2-nqq.tar.gz
-#Source1:       cobalt-fedora.css
+Source0:		https://github.com/notepadqq/notepadqq/archive/v%{version}.tar.gz
+# Codemirror download
+Source1:		https://github.com/notepadqq/CodeMirror/archive/5.18.2-nqq.tar.gz
 
 
-BuildRequires:	git
 BuildRequires:	qt5-qtsvg-devel
 BuildRequires:	qt5-qtwebkit-devel
 BuildRequires:	qt5-devel
@@ -33,7 +31,7 @@ Features:
 
 %prep
 %setup -q
-tar -xf %{_builddir}/../SOURCES/CodeMirror-5.18.2-nqq.tar.gz -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
+tar -xf %{_builddir}/../SOURCES/5.18.2-nqq.tar.gz -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
 
 
 %build
@@ -47,7 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p %{buildroot}/%{_datarootdir}/%{name} \
 	 %{buildroot}/%{_datarootdir}/applications \
 	 %{buildroot}/%{_bindir} %{buildroot}%{_docdir}/%{name} \
-	 %{buildroot}%{_mandir}/man1
+	 %{buildroot}%{_mandir}/man1 \
+	 %{buildroot}/%{_libexecdir}/%{name}/bin/
+	 
 
 # Docs, Manpage
 mv *md COPYING %{buildroot}%{_docdir}/%{name}
@@ -58,25 +58,42 @@ cp $(find | grep desktop$) %{buildroot}/%{_datarootdir}/applications
 
 # App data
 cd out/release
+# Move files to comply better with FHS
+mv bin/* %{buildroot}/%{_bindir}/
+mv lib/* %{buildroot}/%{_libexecdir}/%{name}/
+mv appdata/* ./
+rm -r lib appdata
 mv * %{buildroot}/%{_datarootdir}/%{name}
-# Lib is for libs.. Move notepadqq to bin
-mv %{buildroot}/%{_datarootdir}/%{name}/lib/notepadqq-bin %{buildroot}/%{_datarootdir}/%{name}/bin/notepadqq-bin
-rm -r %{buildroot}/%{_datarootdir}/%{name}/lib/
-cd %{buildroot}/%{_bindir}
-ln -sf %{_datarootdir}/%{name}/bin/%{name} %{name}
+
+# Patch for support notepadqq start script in fedora
+sed -i 's/"\/notepadqq/"\/..\/..\/usr\/libexec\/notepadqq\/notepadqq/g' %{buildroot}/%{_bindir}/%{name}
 
 # Delete some not neccesary tests
-rm -r %{buildroot}/usr/share/notepadqq/appdata/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
+rm -r %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
+rm -r %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test
+
+# Patch /usr/bin/env node to /usr/bin/node (Of codemirror source)
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/shelljs/bin/shjs
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/shelljs/scripts/*.js
+sed -i '1i #\!\/usr\/bin\/node' %{buildroot}/%{_datadir}/%{name}/editor/libs/codemirror/mode/sas/sas.js
 
 %files
 %doc %{_mandir}/man1/%{name}.1.gz
 %{_bindir}/%{name}
+%{_libexecdir}/%{name}/%{name}-bin
 %{_datarootdir}/applications/%{name}.desktop
 %{_datarootdir}/%{name}
 %{_docdir}/%{name}
 
 
 %changelog
+
+* Sat Feb 25 2017 Kevin Puertas Ruiz <kevin01010@gmail.com> 1.0.1-4
+- Some files change path
+- Delete some tests
+- Fixes to rpmlint changing shebangs of codemirror
+- Patch for notepadqq start (Till notepadqq accepts patch in release)
 
 * Wed Feb 22 2017 Kevin Puertas Ruiz <kevin01010@gmail.com> 1.0.1-3
 - Fixed fedora (25) compilation
