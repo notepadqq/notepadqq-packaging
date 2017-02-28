@@ -1,11 +1,11 @@
 Name:			notepadqq
 Version:		1.0.1
-Release:		4%{?dist}
-Summary:		A Linux clone of Notepad++
+Release:		5%{?dist}
+Summary:		An advanced text editor for developers
 
 License:		GPLv3
 URL:			https://github.com/notepadqq/notepadqq
-Source0:		https://github.com/notepadqq/notepadqq/archive/v%{version}.tar.gz
+Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Codemirror download
 Source1:		https://github.com/notepadqq/CodeMirror/archive/5.18.2-nqq.tar.gz
 
@@ -21,27 +21,37 @@ Requires:		qt5-qtsvg
 
 
 %description
-An advanced basic text editor.
-Features:
-* Syntax Highlighting
-* Color Themes
-* Code-Collapse
-* Macro-recorder
-
+A qt text editor for developers, with advanced tools, but remaining simple.
+It supports syntax highlighting, themes and more
 
 %prep
 %setup -q
-tar -xf %{_builddir}/../SOURCES/5.18.2-nqq.tar.gz -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
+tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
+
+# Patch section
+# Patches /usr/bin/env node to /usr/bin/node (Of codemirror source)
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror/test/run.js
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/shelljs/bin/shjs
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/shelljs/scripts/*.js
+sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js
+
+# Patch for rpmlint, it says that it needs a shebang.
+sed -i '1i #\!\/usr\/bin\/node' %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror/mode/sas/sas.js
+
+# Patch for support notepadqq start script in fedora
+sed -i 's/"\/notepadqq/"\/..\/..\/usr\/libexec\/notepadqq\/notepadqq/g' %{_builddir}/%{name}-%{version}/support_files/launch/notepadqq
+
+# Delete some not neccesary tests (Causes warnings of shebangs, not useful)
+rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
+rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test
 
 
 %build
-
 %configure --qmake=qmake-qt5 --prefix %{buildroot}/usr --lrelease /usr/bin/lrelease-qt5
-make %{?_smp_mflags}
+%make_build
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 mkdir -p %{buildroot}/%{_datarootdir}/%{name} \
 	 %{buildroot}/%{_datarootdir}/applications \
 	 %{buildroot}/%{_bindir} %{buildroot}%{_docdir}/%{name} \
@@ -65,19 +75,6 @@ mv appdata/* ./
 rm -r lib appdata
 mv * %{buildroot}/%{_datarootdir}/%{name}
 
-# Patch for support notepadqq start script in fedora
-sed -i 's/"\/notepadqq/"\/..\/..\/usr\/libexec\/notepadqq\/notepadqq/g' %{buildroot}/%{_bindir}/%{name}
-
-# Delete some not neccesary tests
-rm -r %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
-rm -r %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test
-
-# Patch /usr/bin/env node to /usr/bin/node (Of codemirror source)
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/shelljs/bin/shjs
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{buildroot}/%{_datadir}/%{name}/extension_tools/node_modules/shelljs/scripts/*.js
-sed -i '1i #\!\/usr\/bin\/node' %{buildroot}/%{_datadir}/%{name}/editor/libs/codemirror/mode/sas/sas.js
-
 %files
 %doc %{_mandir}/man1/%{name}.1.gz
 %{_bindir}/%{name}
@@ -88,6 +85,9 @@ sed -i '1i #\!\/usr\/bin\/node' %{buildroot}/%{_datadir}/%{name}/editor/libs/cod
 
 
 %changelog
+
+* Sun Feb 26 2017 Kevin Puertas Ruiz <kevin01010@gmail.com> 1.0.1-5
+- Fix some issues from fedora bugzilla 1426844 (Nemanja Milosevic)
 
 * Sat Feb 25 2017 Kevin Puertas Ruiz <kevin01010@gmail.com> 1.0.1-4
 - Some files change path
@@ -130,3 +130,4 @@ sed -i '1i #\!\/usr\/bin\/node' %{buildroot}/%{_datadir}/%{name}/editor/libs/cod
 
 * Sat Nov 15 2014 Simon Arjuna Erat <erat.simon@gmail.com> 0.40.1-1
 - Initial build attempt
+
