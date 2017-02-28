@@ -1,7 +1,7 @@
 Name:			notepadqq
 Version:		1.0.1
 Release:		5%{?dist}
-Summary:		A qt advanced text editor
+Summary:		An advanced text editor for developers
 
 License:		GPLv3
 URL:			https://github.com/notepadqq/notepadqq
@@ -22,7 +22,7 @@ Requires:		qt5-qtsvg
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
-It has Syntax highlighting, themes, macros and more
+It supports syntax highlighting, themes and more
 
 %prep
 %setup -q
