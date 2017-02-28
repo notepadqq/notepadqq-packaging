@@ -12,7 +12,7 @@ $ rpmdev-setuptree
 
 3- Copy sources to folders (You can see it in Source0 and Source1 in the .spec file)
 
-$ wget https://github.com/notepadqq/notepadqq/archive/v1.0.1.tar.gz -O ~/rpmbuild/SOURCES/v1.0.1.tar.gz
+$ wget https://github.com/notepadqq/notepadqq/archive/v1.0.1.tar.gz -O ~/rpmbuild/SOURCES/notepadqq-1.0.1.tar.gz
 
 $ wget https://github.com/notepadqq/CodeMirror/archive/5.18.2-nqq.tar.gz -O ~/rpmbuild/SOURCES/5.18.2-nqq.tar.gz
 
