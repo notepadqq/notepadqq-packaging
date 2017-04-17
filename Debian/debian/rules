@@ -12,6 +12,11 @@ override_dh_auto_clean:
 	dh_auto_clean
 	rm -rf out
 
+# Work-around for some machines where INSTALL_ROOT is not set properly by
+# dh_auto_install
+override_dh_auto_install:
+	dh_auto_install -- INSTALL_ROOT=$(CURDIR)/debian/tmp
+
 override_dh_install:
 	rm -rf `find $(EXTDIR) -type d -name test*` \
 		$(EXTDIR)/archiver/node_modules/async/support $(EXTDIR)/shelljs/scripts
