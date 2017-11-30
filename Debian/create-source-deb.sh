@@ -52,7 +52,7 @@ echo
 echo
 echo "Upstream source code downloaded and ready in:"
 echo "$TMP_DIR/notepadqq-$PKG_VERSION/"
-echo "Open another shell to apply your changes (e.g. to run dch)."
+echo "Open another shell to apply your changes (e.g. to run 'dch' and 'dch -r')."
 read -p "When ready, press enter to continue..." dummy
 
 # Create source package, exit if fails

@@ -1,3 +1,62 @@
+notepadqq (1.2.0-1~artful1) artful; urgency=medium
+
+  * allow banners to stretch horizontally and vertically (#349)
+  * Preferences menu now has an "Apply" button in addition to "Ok" and "Cancel". That way users can immediately see visual changes (like themes) without having to exit the menu all the time.
+  * The Shortcuts tab now has a "Reset Selected Shortcut" in addition to the "Reset All Shortcut" button.
+  * The Preferences menu remembers the last selected settings tab and will automatically switch to it when re-opened (this is not a saved setting. Only implemented as a static variable).
+  * Turned the "File Format" and "Encoding" labels in the status bar into ClickableLabels. When clicked, they open the Format/Encoding QMenu that is also used in Nqq's menu bar.
+  * File encoding in the status bar wasn't properly updated. Fixed that by calling updateEditorUiInfo() when switching encoding.
+  * Added menu shortcuts for accessibility
+  * l10n: add Slovenian translation (#352)
+  * sessions: during session load, show BannerFileRemoved when the file is missing (#353)
+  * preferences: fix theme loading glitch (closes #246) (#356)
+  * UI: disable "reload" actions if no file to reload exists (#354)
+  * Update notepadqq launcher (fedora) (#366)
+  * Support Qt 5.8 and 5.9 (#376)
+  * fix: user was not allowed to exit Nqq if session.xml couldn't be saved
+  * Title bar has wrong tab title after launch (fixes #421) (#422)
+  * Warn about missing icons; fix potential crash
+  * %directory% in run command. (#434)
+  * Fix segfault on start (fixes #440)
+  * Open folder contents if a folder is dropped onto Nqq. (#455)
+  * add handel-c language (#443)
+  * Apply group replacement across the entire matched string.
+  * Fixed "^F Find ENTER does not search for the currently selected text" #417. (#468)
+  * Convert text to path in svg logo (#477)
+  * Added a "Retry as Root" to Nqq's save dialog. (#480)
+  * Keep file names of deleted files when loading a session. Otherwise they just show up as 'new X'. (#483)
+  * Don't load tabs from session that don't exist and aren't cached since they're just empty. (#484)
+  * Prompt user when opening a file from recent history that does not exist anymore. Fixes #248.
+  * Remember "Enable Smart Indent" setting #488 (#492) 
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 15 Oct 2017 12:55:11 +0200
+
+notepadqq (1.0.1-3~artful1) artful; urgency=medium
+
+  * Release for artful
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Mon, 17 Apr 2017 23:44:53 +0200
+
+notepadqq (1.0.1-0~yakkety1) yakkety; urgency=medium
+
+  * Fix: settings were not saved
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 05 Feb 2017 23:46:42 +0100
+
+notepadqq (1.0.0-0~yakkety1) yakkety; urgency=medium
+
+  * Sessions
+  * Run menu
+  * Option to disable smart indentation
+  * Option to change line height
+  * Support special characters in replacement strings when searching
+  * Improved shortcut settings
+  * Speed improvements in search in files
+  * Use the system language as default language
+  * Swedish localization
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Sun, 05 Feb 2017 22:54:57 +0100
+
 notepadqq (0.53.0-0~xenial1) xenial; urgency=medium
 
   * Allow users to configure a custom font (and size) (e246e81)
