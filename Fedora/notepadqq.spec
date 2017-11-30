@@ -1,6 +1,6 @@
 Name:			notepadqq
 Version:		1.2.0
-Release:		5%{?dist}
+Release:		1%{?dist}
 Summary:		An advanced text editor for developers
 
 License:		GPLv3
@@ -9,6 +9,8 @@ Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Codemirror download
 Source1:		https://github.com/codemirror/CodeMirror/archive/5.32.0.tar.gz
 
+Patch0: nodepath.patch
+Patch1: sas.patch
 
 BuildRequires:	qt5-qtsvg-devel
 BuildRequires:	qt5-qtwebkit-devel
@@ -18,7 +20,7 @@ BuildRequires:	qtchooser
 
 Requires:		qt5-qtwebkit
 Requires:		qt5-qtsvg
-
+Requires:               nodejs
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
@@ -28,22 +30,13 @@ It supports syntax highlighting, themes and more
 %setup -q
 tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
 
-# Patch section
-# Patches /usr/bin/env node to /usr/bin/node (Of codemirror source)
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror/test/run.js
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/shelljs/bin/shjs
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/shelljs/scripts/*.js
-sed -i 's/\/usr\/bin\/env node/\/usr\/bin\/node/g' %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js
-
-# Patch for rpmlint, it says that it needs a shebang.
-sed -i '1i #\!\/usr\/bin\/node' %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror/mode/sas/sas.js
-
-# Patch for support notepadqq start script in fedora
-sed -i 's/"\/notepadqq/"\/..\/..\/usr\/libexec\/notepadqq\/notepadqq/g' %{_builddir}/%{name}-%{version}/support_files/launch/notepadqq
+# Patch source
+%patch0 -p1 
+%patch1 -p1
 
 # Delete some not neccesary tests (Causes warnings of shebangs, not useful)
-rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
-rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test
+#rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
+#rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test
 
 
 %build
@@ -88,7 +81,8 @@ mv * %{buildroot}/%{_datarootdir}/%{name}
 
 * Thu Nov 30 2017 Jan De Luyck <jan@kcore.org> 1.2.0-1
 - Updated to 1.2.0
-- Built against CodeMirror 5.32.0
+- Updated to CodeMirror 5.32.0
+- Moved patching to .patch files
 
 * Sun Feb 26 2017 Kevin Puertas Ruiz <kevin01010@gmail.com> 1.0.1-5
 - Fix some issues from fedora bugzilla 1426844 (Nemanja Milosevic)

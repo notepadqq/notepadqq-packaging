@@ -1,0 +1,89 @@
+diff -ru notepadqq-orig/src/editor/libs/codemirror/bin/compress notepadqq-1.2.0/src/editor/libs/codemirror/bin/compress
+--- notepadqq-orig/src/editor/libs/codemirror/bin/compress	2017-11-22 10:10:50.000000000 +0100
++++ notepadqq-1.2.0/src/editor/libs/codemirror/bin/compress	2017-11-30 21:54:16.975780447 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ // Compression helper for CodeMirror
+ //
+diff -ru notepadqq-orig/src/editor/libs/codemirror/bin/lint notepadqq-1.2.0/src/editor/libs/codemirror/bin/lint
+--- notepadqq-orig/src/editor/libs/codemirror/bin/lint	2017-11-22 10:10:50.000000000 +0100
++++ notepadqq-1.2.0/src/editor/libs/codemirror/bin/lint	2017-11-30 21:54:13.866701822 +0100
+@@ -1,3 +1,3 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ process.exit(require("../test/lint").ok ? 0 : 1);
+diff -ru notepadqq-orig/src/editor/libs/codemirror/bin/release notepadqq-1.2.0/src/editor/libs/codemirror/bin/release
+--- notepadqq-orig/src/editor/libs/codemirror/bin/release	2017-11-22 10:10:50.000000000 +0100
++++ notepadqq-1.2.0/src/editor/libs/codemirror/bin/release	2017-11-30 21:54:10.529617431 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ var fs = require("fs"), child = require("child_process");
+ 
+diff -ru notepadqq-orig/src/editor/libs/codemirror/bin/source-highlight notepadqq-1.2.0/src/editor/libs/codemirror/bin/source-highlight
+--- notepadqq-orig/src/editor/libs/codemirror/bin/source-highlight	2017-11-22 10:10:50.000000000 +0100
++++ notepadqq-1.2.0/src/editor/libs/codemirror/bin/source-highlight	2017-11-30 21:54:04.424463039 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ // Simple command-line code highlighting tool. Reads code from stdin,
+ // spits html to stdout. For example:
+diff -ru notepadqq-orig/src/editor/libs/codemirror/test/run.js notepadqq-1.2.0/src/editor/libs/codemirror/test/run.js
+--- notepadqq-orig/src/editor/libs/codemirror/test/run.js	2017-11-22 10:10:50.000000000 +0100
++++ notepadqq-1.2.0/src/editor/libs/codemirror/test/run.js	2017-11-30 21:52:20.747841178 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ var ok = require("./lint").ok;
+ 
+diff -ru notepadqq-orig/src/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js notepadqq-1.2.0/src/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js
+--- notepadqq-orig/src/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js	2017-10-15 12:36:09.000000000 +0200
++++ notepadqq-1.2.0/src/extension_tools/node_modules/archiver/node_modules/async/support/sync-package-managers.js	2017-11-30 21:53:16.196243403 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ // This should probably be its own module but complaints about bower/etc.
+ // support keep coming up and I'd rather just enable the workflow here for now
+diff -ru notepadqq-orig/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js notepadqq-1.2.0/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
+--- notepadqq-orig/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js	2017-10-15 12:36:09.000000000 +0200
++++ notepadqq-1.2.0/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js	2017-11-30 21:53:41.426881457 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ const user       = process.env.SAUCE_USER
+     , key        = process.env.SAUCE_KEY
+diff -ru notepadqq-orig/src/extension_tools/node_modules/shelljs/bin/shjs notepadqq-1.2.0/src/extension_tools/node_modules/shelljs/bin/shjs
+--- notepadqq-orig/src/extension_tools/node_modules/shelljs/bin/shjs	2017-10-15 12:36:09.000000000 +0200
++++ notepadqq-1.2.0/src/extension_tools/node_modules/shelljs/bin/shjs	2017-11-30 21:52:56.197737664 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ require('../global');
+ 
+ if (process.argv.length < 3) {
+diff -ru notepadqq-orig/src/extension_tools/node_modules/shelljs/scripts/generate-docs.js notepadqq-1.2.0/src/extension_tools/node_modules/shelljs/scripts/generate-docs.js
+--- notepadqq-orig/src/extension_tools/node_modules/shelljs/scripts/generate-docs.js	2017-10-15 12:36:09.000000000 +0200
++++ notepadqq-1.2.0/src/extension_tools/node_modules/shelljs/scripts/generate-docs.js	2017-11-30 21:53:05.839981505 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ require('../global');
+ 
+ echo('Appending docs to README.md');
+diff -ru notepadqq-orig/src/extension_tools/node_modules/shelljs/scripts/run-tests.js notepadqq-1.2.0/src/extension_tools/node_modules/shelljs/scripts/run-tests.js
+--- notepadqq-orig/src/extension_tools/node_modules/shelljs/scripts/run-tests.js	2017-10-15 12:36:09.000000000 +0200
++++ notepadqq-1.2.0/src/extension_tools/node_modules/shelljs/scripts/run-tests.js	2017-11-30 21:53:05.839981505 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ require('../global');
+ 
+ var path = require('path');
