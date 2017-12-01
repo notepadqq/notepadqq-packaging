@@ -1,39 +1,36 @@
-**Building rpm for Fedora**
+## Building rpm for Fedora
+
+** Note: Items prefixed with \# means run the command as root (or use `sudo`). Items prefixed with $ should be run as your own/build user. **
 
 Steps:
 
-1- Download dependencies
+1. Download dependencies
 
-\# dnf install fedora-packager gcc gcc-c++ make qt5-qtsvg-devel qt5-qtwebkit-devel qt5-devel qt-creator qtchooser nodejs
+\# `dnf install fedora-packager gcc gcc-c++ make qt5-qtsvg-devel qt5-qtwebkit-devel qt5-devel qt-creator qtchooser nodejs`
 
-2- Create structure
+2. Create structure
 
-$ rpmdev-setuptree
+$ `rpmdev-setuptree`
 
-3- Copy sources to folders (You can see it in Source0 and Source1 in the .spec file)
+3. Copy sources to folders (You can see it in [notepadqq.spec](https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/notepadqq.spec) file)
 
-$ wget https://github.com/notepadqq/notepadqq/archive/v1.2.0.tar.gz -O ~/rpmbuild/SOURCES/notepadqq-1.2.0.tar.gz
+  * $ `wget https://github.com/notepadqq/notepadqq/archive/v1.2.0.tar.gz -O ~/rpmbuild/SOURCES/notepadqq-1.2.0.tar.gz`
+  * $ `wget https://github.com/codemirror/CodeMirror/archive/5.32.0.tar.gz -O ~/rpmbuild/SOURCES/5.32.0.tar.gz`
+  * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/notepadqq.spec -O ~/rpmbuild/SPECS/notepadqq.spec`
+  * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/node-path.patch -O ~/rpmbuild/SOURCES/node-path.patch`
+  * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/bash-path.patch -O ~/rpmbuild/SOURCES/bash-path.patch`
+  * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/add-node.patch -O ~/rpmbuild/SOURCES/add-node.patch`
 
-$ wget https://github.com/codemirror/CodeMirror/archive/5.32.0.tar.gz -O ~/rpmbuild/SOURCES/5.32.0.tar.gz
+4. Go to directory, and build it
 
-$ wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/notepadqq.spec -O ~/rpmbuild/SPECS/notepadqq.spec
+$ `cd ~/rpmbuild/SPECS/`
 
-$ wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/nodepath.patch -O ~/rpmbuild/SOURCES/nodepath.patch
+$ `rpmbuild -ba notepadqq.spec`
 
-$ wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/sas.patch -O ~/rpmbuild/SOURCES/sas.patch
+5. Go to build directory, and install it
 
-4- Go to directory, and build it
+$ `cd ~/rpmbuild/RPMS/x86_64`  (Or i686)
 
-$ cd ~/rpmbuild/SPECS/
+\# `dnf install notepadqq-1......rpm`
 
-$ rpmbuild -ba notepadqq.spec
-
-5- Go to build directory, and install it
-
-$ cd ~/rpmbuild/RPMS/x86_64  (Or i686)
-
-\# dnf install notepadqq-1......rpm
-
-Note: Do not install debuginfo version
-
-Additional notes: \# is run as root, $ is normal user
+_Note: Do not install debuginfo version_
