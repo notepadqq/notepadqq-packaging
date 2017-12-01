@@ -9,8 +9,9 @@ Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Codemirror download
 Source1:		https://github.com/codemirror/CodeMirror/archive/5.32.0.tar.gz
 
-Patch0: nodepath.patch
-Patch1: sas.patch
+Patch0:			node-path.patch
+Patch1:			add-node.patch
+Patch2:			bash-path.patch
 
 BuildRequires:	qt5-qtsvg-devel
 BuildRequires:	qt5-qtwebkit-devel
@@ -20,7 +21,7 @@ BuildRequires:	qtchooser
 
 Requires:		qt5-qtwebkit
 Requires:		qt5-qtsvg
-Requires:               nodejs
+Requires:		nodejs
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
@@ -33,10 +34,7 @@ tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror -
 # Patch source
 %patch0 -p1 
 %patch1 -p1
-
-# Delete some not neccesary tests (Causes warnings of shebangs, not useful)
-#rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test
-#rm -r %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test
+%patch2 -p1
 
 
 %build
@@ -75,7 +73,8 @@ mv * %{buildroot}/%{_datarootdir}/%{name}
 %{_datarootdir}/applications/%{name}.desktop
 %{_datarootdir}/%{name}
 %{_docdir}/%{name}
-
+%attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh
+%attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
 
 %changelog
 
