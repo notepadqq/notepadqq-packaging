@@ -65,7 +65,7 @@ rm -r lib appdata
 mv * %{buildroot}/%{_datadir}/%{name}
 
 %files
-%{_mandir}/man1/%{name}.1.*
+%{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/%{name}-bin
 %{_datadir}/applications/%{name}.desktop
