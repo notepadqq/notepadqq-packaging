@@ -1,6 +1,6 @@
 Name:			notepadqq
 Version:		1.2.0
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		An advanced text editor for developers
 
 License:		GPLv3
@@ -9,8 +9,11 @@ Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Codemirror download
 Source1:		https://github.com/codemirror/CodeMirror/archive/5.32.0.tar.gz
 
+# Change /usr/bin/env node to /usr/bin/node
 Patch0:			node-path.patch
+# Add /usr/bin/node to appease lintean
 Patch1:			add-node.patch
+# Change /usr/bin/env bash to /usr/bin/bash
 Patch2:			bash-path.patch
 
 BuildRequires:	qt5-qtsvg-devel
@@ -18,24 +21,19 @@ BuildRequires:	qt5-qtwebkit-devel
 BuildRequires:	qt5-devel
 BuildRequires:	qt-creator
 BuildRequires:	qtchooser
+BuildRequires:	desktop-file-utils
 
-Requires:		qt5-qtwebkit
-Requires:		qt5-qtsvg
-Requires:		nodejs
+Requires:	qt5-qtwebkit
+Requires:	qt5-qtsvg
+Requires:	nodejs
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
 It supports syntax highlighting, themes and more
 
 %prep
-%setup -q
+%autosetup -p1
 tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
-
-# Patch source
-%patch0 -p1 
-%patch1 -p1
-%patch2 -p1
-
 
 %build
 %configure --qmake=qmake-qt5 --prefix %{buildroot}/usr --lrelease /usr/bin/lrelease-qt5
@@ -43,8 +41,8 @@ tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror -
 
 
 %install
-mkdir -p %{buildroot}/%{_datarootdir}/%{name} \
-	 %{buildroot}/%{_datarootdir}/applications \
+mkdir -p %{buildroot}/%{_datadir}/%{name} \
+	 %{buildroot}/%{_datadir}/applications \
 	 %{buildroot}/%{_bindir} %{buildroot}%{_docdir}/%{name} \
 	 %{buildroot}%{_mandir}/man1 \
 	 %{buildroot}/%{_libexecdir}/%{name}/bin/
@@ -55,7 +53,7 @@ mv *md COPYING %{buildroot}%{_docdir}/%{name}
 cp support_files/manpage/%{name}.1 %{buildroot}%{_mandir}/man1
 
 # Icon
-cp $(find | grep desktop$) %{buildroot}/%{_datarootdir}/applications
+desktop-file-install --dir=%{buildroot}/%{_datadir}/applications support_files/shortcuts/%{name}.desktop
 
 # App data
 cd out/release
@@ -64,19 +62,21 @@ mv bin/* %{buildroot}/%{_bindir}/
 mv lib/* %{buildroot}/%{_libexecdir}/%{name}/
 mv appdata/* ./
 rm -r lib appdata
-mv * %{buildroot}/%{_datarootdir}/%{name}
+mv * %{buildroot}/%{_datadir}/%{name}
 
 %files
-%doc %{_mandir}/man1/%{name}.1.gz
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/%{name}-bin
-%{_datarootdir}/applications/%{name}.desktop
-%{_datarootdir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/%{name}
 %{_docdir}/%{name}
 %attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh
 %attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
 
 %changelog
+
+* Sun Dec 10 2017 Jan De Luyck <jan@kcore.org> 1.2.0-2
+- Fixed some issues from Fedora bugzilla 1519785, as remarked by Ben Rosser.
 
 * Thu Nov 30 2017 Jan De Luyck <jan@kcore.org> 1.2.0-1
 - Updated to 1.2.0
