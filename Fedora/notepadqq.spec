@@ -1,13 +1,13 @@
 Name:			notepadqq
 Version:		1.2.0
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		An advanced text editor for developers
 
 License:		GPLv3
 URL:			https://github.com/notepadqq/notepadqq
 Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Codemirror download
-Source1:		https://github.com/codemirror/CodeMirror/archive/5.32.0.tar.gz
+Source1:		https://github.com/codemirror/CodeMirror/archive/5.33.0.tar.gz
 
 # Change /usr/bin/env node to /usr/bin/node
 Patch0:			node-path.patch
@@ -75,6 +75,8 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
 
 %changelog
+* Sun Feb 04 2018 Jan De Luyck <jan@kcore.org> 1.2.0-3
+- updated to codemirror 5.33.0
 
 * Sun Dec 10 2017 Jan De Luyck <jan@kcore.org> 1.2.0-2
 - Fixed some issues from Fedora bugzilla 1519785, as remarked by Ben Rosser.
