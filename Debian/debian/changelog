@@ -1,3 +1,27 @@
+notepadqq (1.3.0-0~artful1) artful; urgency=medium
+
+  * Added Spanish Translation by inukaze. Fixes #507. (#508)
+  * Fix Qt5 version detection.
+  * Ability to disable saving search history (#528)
+  * Advanced Search Dock
+  * Support loading Qt 5.10 through /opt/ or ~/
+  * Update CodeMirror to 5.33.0
+  * Add menu options to toggle visibility of toolbar and menubar.
+  * Add option to quit Nqq when closing last open tab. (#550)
+  * Improve high Dpi looks
+  * Fix infinite loop when searching for 0-length regex
+  * Fix editor focus issues (fixes #265)
+  * Back references now working for regex search using the search dock.
+  * Add help dialog about regular expression use
+  * Prevent appmenu-qt5 from removing our menubar
+  * feat: implement --allow-root and prohibit running as root by default.
+  * feat: Add customizable Toolbar
+  * feat: Enable basic document printing
+  * fix: Prefer GTK's icon theme if XDG_CURRENT_DESKTOP is not set
+  * feat: allow horizontal scrolling when holding shift + mouse wheel (closes #582)
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Tue, 03 Apr 2018 15:30:55 +0200
+
 notepadqq (1.2.0-1~artful1) artful; urgency=medium
 
   * allow banners to stretch horizontally and vertically (#349)
