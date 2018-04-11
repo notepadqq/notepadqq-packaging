@@ -7,13 +7,6 @@ License:		GPLv3
 URL:			https://github.com/notepadqq/notepadqq
 Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-# Change /usr/bin/env node to /usr/bin/node
-#Patch0:			node-path.patch
-# Add /usr/bin/node to appease lintean
-#Patch1:			add-node.patch
-# Change /usr/bin/env bash to /usr/bin/bash
-#Patch2:			bash-path.patch
-
 BuildRequires:	qt5-qtsvg-devel
 BuildRequires:	qt5-qtwebkit-devel
 BuildRequires:	qt5-devel
@@ -31,7 +24,6 @@ It supports syntax highlighting, themes and more
 
 %prep
 %autosetup -p1
-#tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
 
 %build
 %configure --qmake=qmake-qt5 --prefix %{buildroot}/usr --lrelease /usr/bin/lrelease-qt5

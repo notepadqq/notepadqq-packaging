@@ -1,8 +1,0 @@
---- notepadqq-orig/src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh	2017-10-15 12:36:09.000000000 +0200
-+++ notepadqq-1.2.0/src/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh	2017-11-30 22:35:57.168773899 +0100
-@@ -1,4 +1,4 @@
--#!/usr/bin/env bash
-+#!/usr/bin/bash
- 
- set -e
- 
