@@ -1,20 +1,18 @@
 Name:			notepadqq
-Version:		1.2.0
-Release:		3%{?dist}
+Version:		1.3.4
+Release:		1%{?dist}
 Summary:		An advanced text editor for developers
 
 License:		GPLv3
 URL:			https://github.com/notepadqq/notepadqq
 Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# Codemirror download
-Source1:		https://github.com/codemirror/CodeMirror/archive/5.33.0.tar.gz
 
 # Change /usr/bin/env node to /usr/bin/node
-Patch0:			node-path.patch
+#Patch0:			node-path.patch
 # Add /usr/bin/node to appease lintean
-Patch1:			add-node.patch
+#Patch1:			add-node.patch
 # Change /usr/bin/env bash to /usr/bin/bash
-Patch2:			bash-path.patch
+#Patch2:			bash-path.patch
 
 BuildRequires:	qt5-qtsvg-devel
 BuildRequires:	qt5-qtwebkit-devel
@@ -33,7 +31,7 @@ It supports syntax highlighting, themes and more
 
 %prep
 %autosetup -p1
-tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
+#tar -xf %SOURCE1 -C %{_builddir}/%{name}-%{version}/src/editor/libs/codemirror --strip 1
 
 %build
 %configure --qmake=qmake-qt5 --prefix %{buildroot}/usr --lrelease /usr/bin/lrelease-qt5
@@ -75,6 +73,9 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
 
 %changelog
+* Wed Apr 11 2018 Jan De Luyck <jan@kcore.org> 1.3.4-1
+- updated to 1.3.4
+
 * Sun Feb 04 2018 Jan De Luyck <jan@kcore.org> 1.2.0-3
 - updated to codemirror 5.33.0
 
