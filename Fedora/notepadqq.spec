@@ -1,6 +1,6 @@
 Name:			notepadqq
 Version:		1.3.4
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		An advanced text editor for developers
 
 License:		GPLv3
@@ -17,6 +17,8 @@ BuildRequires:	desktop-file-utils
 Requires:	qt5-qtwebkit
 Requires:	qt5-qtsvg
 Requires:	nodejs
+
+Provides: bundled(nodejs-codemirror) = 5.33.0 
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
@@ -65,6 +67,9 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
 
 %changelog
+* Wed Apr 11 2018 Jan De Luyck <jan@kcore.org> 1.3.4-2
+- Added Provides (comment on Fedora bugzilla)
+
 * Wed Apr 11 2018 Jan De Luyck <jan@kcore.org> 1.3.4-1
 - updated to 1.3.4
 
