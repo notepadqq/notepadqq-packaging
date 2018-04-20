@@ -76,7 +76,6 @@ mv * %{buildroot}/%{_datadir}/%{name}
 * Fri Apr 20 2018 Jan De Luyck <jan@kcore.org> 1.3.6-1
 - Removed bundled nodejs-archiver and nodejs-shelljs
 - Updated to 1.3.6
-- Added MIT license for CodeMirror (and adm-zip)
 
 * Wed Apr 11 2018 Jan De Luyck <jan@kcore.org> 1.3.4-2
 - Added Provides (comment on Fedora bugzilla)
