@@ -3,7 +3,6 @@
 **Note: Items prefixed with \# means run the command as root (or use `sudo`). Items prefixed with $ should be run as your own/build user.**
 
 Steps:
-<<<<<<< HEAD
 
 1. Download dependencies
 
