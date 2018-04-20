@@ -1,24 +1,29 @@
-Name:			notepadqq
-Version:		1.3.4
-Release:		2%{?dist}
-Summary:		An advanced text editor for developers
+Name:           notepadqq
+Version:        1.3.6
+Release:        1%{?dist}
+Summary:        An advanced text editor for developers
 
-License:		GPLv3
-URL:			https://github.com/notepadqq/notepadqq
-Source0:		%{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+License:        GPLv3 and MIT
+URL:            https://github.com/notepadqq/notepadqq
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:	qt5-qtsvg-devel
-BuildRequires:	qt5-qtwebkit-devel
-BuildRequires:	qt5-devel
-BuildRequires:	qt-creator
-BuildRequires:	qtchooser
-BuildRequires:	desktop-file-utils
+Patch1:         add-node.patch
 
-Requires:	qt5-qtwebkit
-Requires:	qt5-qtsvg
-Requires:	nodejs
+BuildRequires:  qt5-qtsvg-devel
+BuildRequires:  qt5-qtwebkit-devel
+BuildRequires:  qt5-devel
+BuildRequires:  qt-creator
+BuildRequires:  qtchooser
+BuildRequires:  desktop-file-utils
 
-Provides: bundled(nodejs-codemirror) = 5.33.0 
+Requires:       qt5-qtwebkit
+Requires:       qt5-qtsvg
+Requires:       nodejs
+Requires:       nodejs-shelljs
+Requires:       nodejs-archiver
+
+Provides:       bundled(nodejs-codemirror) = 5.33.0 
+Provides:       bundled(nodejs-adm-zip) 
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
@@ -28,17 +33,20 @@ It supports syntax highlighting, themes and more
 %autosetup -p1
 
 %build
-%configure --qmake=qmake-qt5 --prefix %{buildroot}/usr --lrelease /usr/bin/lrelease-qt5
+rm -rf %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/archiver
+rm -rf %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/shelljs
+rm -f %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/.bin/shjs
+ln -s /usr/bin/shjs %{_builddir}/%{name}-%{version}/src/extension_tools/node_modules/.bin/shjs 
+%configure --qmake=qmake-qt5 --lrelease /usr/bin/lrelease-qt5
 %make_build
 
 
 %install
 mkdir -p %{buildroot}/%{_datadir}/%{name} \
-	 %{buildroot}/%{_datadir}/applications \
-	 %{buildroot}/%{_bindir} %{buildroot}%{_docdir}/%{name} \
-	 %{buildroot}%{_mandir}/man1 \
-	 %{buildroot}/%{_libexecdir}/%{name}/bin/
-	 
+         %{buildroot}/%{_datadir}/applications \
+         %{buildroot}/%{_bindir} %{buildroot}%{_docdir}/%{name} \
+         %{buildroot}%{_mandir}/man1 \
+         %{buildroot}/%{_libexecdir}/%{name}/bin/
 
 # Docs, Manpage
 mv *md COPYING %{buildroot}%{_docdir}/%{name}
@@ -63,10 +71,12 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
 %{_docdir}/%{name}
-%attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh
-%attr(0755,root,root)/usr/share/notepadqq/extension_tools/node_modules/archiver/node_modules/tar-stream/node_modules/bl/test/sauce.js
 
 %changelog
+* Fri Apr 20 2018 Jan De Luyck <jan@kcore.org> 1.3.6-1
+- Removed bundled nodejs-archiver and nodejs-shelljs
+- Updated to 1.3.6
+
 * Wed Apr 11 2018 Jan De Luyck <jan@kcore.org> 1.3.4-2
 - Added Provides (comment on Fedora bugzilla)
 
