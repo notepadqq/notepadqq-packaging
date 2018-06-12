@@ -1,5 +1,5 @@
 Name:           notepadqq
-Version:        1.3.6
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        An advanced text editor for developers
 
@@ -15,6 +15,7 @@ BuildRequires:  qt5-devel
 BuildRequires:  qt-creator
 BuildRequires:  qtchooser
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 Requires:       qt5-qtwebkit
 Requires:       qt5-qtsvg
@@ -24,6 +25,11 @@ Requires:       nodejs-archiver
 
 Provides:       bundled(nodejs-codemirror) = 5.33.0 
 Provides:       bundled(nodejs-adm-zip) 
+
+# License
+# Notepadqq is licensed under GPLv3
+# CodeMirror is licensed under MIT  
+%license COPYING
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
@@ -49,11 +55,14 @@ mkdir -p %{buildroot}/%{_datadir}/%{name} \
          %{buildroot}/%{_libexecdir}/%{name}/bin/
 
 # Docs, Manpage
-mv *md COPYING %{buildroot}%{_docdir}/%{name}
+mv *md %{buildroot}%{_docdir}/%{name}
 cp support_files/manpage/%{name}.1 %{buildroot}%{_mandir}/man1
 
 # Icon
 desktop-file-install --dir=%{buildroot}/%{_datadir}/applications support_files/shortcuts/%{name}.desktop
+
+# Appstream
+appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 
 # App data
 cd out/release
@@ -67,12 +76,16 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %files
 %{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/%{name}-bin
+%{_libexecdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
 %{_docdir}/%{name}
 
 %changelog
+* Tue Jun 12 2018 Jan De Luyck <jan@kcore.org> 1.4.0-1
+- Updated to 1.4.0
+- Updated SPEC file based on further comments on Bugzilla
+
 * Fri Apr 20 2018 Jan De Luyck <jan@kcore.org> 1.3.6-1
 - Removed bundled nodejs-archiver and nodejs-shelljs
 - Updated to 1.3.6
