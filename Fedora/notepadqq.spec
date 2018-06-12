@@ -4,6 +4,8 @@ Release:        1%{?dist}
 Summary:        An advanced text editor for developers
 
 License:        GPLv3 and MIT
+                #Notepadqq is licensed under GPLv3
+                #CodeMirror is licensed under MIT
 URL:            https://github.com/notepadqq/notepadqq
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -25,11 +27,6 @@ Requires:       nodejs-archiver
 
 Provides:       bundled(nodejs-codemirror) = 5.33.0 
 Provides:       bundled(nodejs-adm-zip) 
-
-# License
-# Notepadqq is licensed under GPLv3
-# CodeMirror is licensed under MIT  
-%license COPYING
 
 %description
 A qt text editor for developers, with advanced tools, but remaining simple.
