@@ -16,6 +16,8 @@ Steps:
 
   * $ `wget https://github.com/notepadqq/notepadqq/archive/v1.3.6.tar.gz -O ~/rpmbuild/SOURCES/notepadqq-1.3.6.tar.gz`
   * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/add-node.patch -O ~/rpmbuild/SOURCES/add-node.patch`
+  * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/appdata.patch -O ~/rpmbuild/SOURCES/appdata.patch`
+
 
 4. Go to directory, and build it
 

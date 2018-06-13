@@ -10,6 +10,7 @@ URL:            https://github.com/notepadqq/notepadqq
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 Patch1:         add-node.patch
+Patch2:         appdata.patch
 
 BuildRequires:  qt5-qtsvg-devel
 BuildRequires:  qt5-qtwebkit-devel
@@ -59,7 +60,9 @@ cp support_files/manpage/%{name}.1 %{buildroot}%{_mandir}/man1
 desktop-file-install --dir=%{buildroot}/%{_datadir}/applications support_files/shortcuts/%{name}.desktop
 
 # Appstream
-appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
+mkdir %{buildroot}%{_metainfodir}
+cp support_files/notepadqq.appdata.xml %{buildroot}%{_metainfodir}
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/notepadqq.appdata.xml
 
 # App data
 cd out/release
@@ -77,6 +80,7 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
 %{_docdir}/%{name}
+%{_metainfodir}/notepadqq.appdata.xml
 
 %changelog
 * Tue Jun 12 2018 Jan De Luyck <jan@kcore.org> 1.4.0-1

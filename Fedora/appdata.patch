@@ -1,0 +1,11 @@
+diff -Nur notepadqq-1.4.0.orig/support_files/notepadqq.appdata.xml notepadqq-1.4.0/support_files/notepadqq.appdata.xml
+--- notepadqq-1.4.0.orig/support_files/notepadqq.appdata.xml	2018-06-12 18:39:33.341891759 +0200
++++ notepadqq-1.4.0/support_files/notepadqq.appdata.xml	2018-06-12 18:39:46.912174605 +0200
+@@ -4,7 +4,6 @@
+   <metadata_license>MIT</metadata_license>
+   <project_license>GPL-3.0</project_license>
+   <name>Notepadqq</name>
+-  <icon width="96" height="96">https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png</icon>
+   <summary>An advanced text editor</summary>
+   <description>
+     <p>
