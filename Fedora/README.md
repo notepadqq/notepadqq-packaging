@@ -14,7 +14,7 @@ Steps:
 
 3. Copy sources to folders (You can see it in [notepadqq.spec](https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/notepadqq.spec) file)
 
-  * $ `wget https://github.com/notepadqq/notepadqq/archive/v1.4.0.tar.gz -O ~/rpmbuild/SOURCES/notepadqq-1.4.0.tar.gz`
+  * $ `wget https://github.com/notepadqq/notepadqq/archive/v1.4.8.tar.gz -O ~/rpmbuild/SOURCES/notepadqq-1.4.8.tar.gz`
   * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/add-node.patch -O ~/rpmbuild/SOURCES/add-node.patch`
   * $ `wget https://raw.githubusercontent.com/notepadqq/notepadqq-packaging/master/Fedora/appdata.patch -O ~/rpmbuild/SOURCES/appdata.patch`
 

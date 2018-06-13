@@ -1,5 +1,5 @@
 Name:           notepadqq
-Version:        1.4.0
+Version:        1.4.8
 Release:        1%{?dist}
 Summary:        An advanced text editor for developers
 
@@ -83,6 +83,9 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %{_metainfodir}/notepadqq.appdata.xml
 
 %changelog
+* Tue Jun 13 2018 Jan De Luyck <jan@kcore.org> 1.4.8-1
+- Updated to 1.4.8
+
 * Tue Jun 12 2018 Jan De Luyck <jan@kcore.org> 1.4.0-1
 - Updated to 1.4.0
 - Updated SPEC file based on further comments on Bugzilla
