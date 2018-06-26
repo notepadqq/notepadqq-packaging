@@ -1,6 +1,6 @@
 Name:           notepadqq
 Version:        1.4.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An advanced text editor for developers
 
 License:        GPLv3 and MIT
@@ -81,9 +81,13 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %{_datadir}/%{name}
 %{_docdir}/%{name}
 %{_metainfodir}/notepadqq.appdata.xml
+%license COPYING
 
 %changelog
-* Tue Jun 13 2018 Jan De Luyck <jan@kcore.org> 1.4.8-1
+* Tue Jun 26 2018 Jan De Luyck <jan@kcore.org> - 1.4.8-2
+- Updated to latest comments on Bugzilla
+
+* Wed Jun 13 2018 Jan De Luyck <jan@kcore.org> 1.4.8-1
 - Updated to 1.4.8
 
 * Tue Jun 12 2018 Jan De Luyck <jan@kcore.org> 1.4.0-1
