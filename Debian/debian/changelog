@@ -1,3 +1,18 @@
+notepadqq (1.4.4-1~bionic1) bionic; urgency=medium
+
+  * Bug fixes
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Tue, 01 May 2018 17:32:53 +0200
+
+notepadqq (1.4.0-1~bionic1) bionic; urgency=medium
+
+  * fix: Use custom context menu to avoid reload bug #336 (#618)
+  * feat: Math rendering (#625)
+  * feat: Don't ask to save empty orphan tabs anymore (closes #632) (#634)
+  * feat: Language cache (#629)
+
+ -- Daniele Di Sarli <danieleds0@gmail.com>  Mon, 30 Apr 2018 18:52:38 +0200
+
 notepadqq (1.3.6-1~bionic1) bionic; urgency=medium
 
   * l10n: add Brazilian localization (#347)

@@ -1,4 +1,5 @@
 Name:           notepadqq
+<<<<<<< HEAD
 Version:        1.4.8
 Release:        2%{?dist}
 Summary:        An advanced text editor for developers
@@ -6,11 +7,21 @@ Summary:        An advanced text editor for developers
 License:        GPLv3 and MIT
                 #Notepadqq is licensed under GPLv3
                 #CodeMirror is licensed under MIT
+=======
+Version:        1.3.6
+Release:        1%{?dist}
+Summary:        An advanced text editor for developers
+
+License:        GPLv3 and MIT
+>>>>>>> upstream/master
 URL:            https://github.com/notepadqq/notepadqq
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 Patch1:         add-node.patch
+<<<<<<< HEAD
 Patch2:         appdata.patch
+=======
+>>>>>>> upstream/master
 
 BuildRequires:  qt5-qtsvg-devel
 BuildRequires:  qt5-qtwebkit-devel
@@ -18,7 +29,10 @@ BuildRequires:  qt5-devel
 BuildRequires:  qt-creator
 BuildRequires:  qtchooser
 BuildRequires:  desktop-file-utils
+<<<<<<< HEAD
 BuildRequires:  libappstream-glib
+=======
+>>>>>>> upstream/master
 
 Requires:       qt5-qtwebkit
 Requires:       qt5-qtsvg
@@ -80,6 +94,7 @@ mv * %{buildroot}/%{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
 %{_docdir}/%{name}
+<<<<<<< HEAD
 %{_metainfodir}/notepadqq.appdata.xml
 %license COPYING
 
@@ -94,6 +109,10 @@ mv * %{buildroot}/%{_datadir}/%{name}
 - Updated to 1.4.0
 - Updated SPEC file based on further comments on Bugzilla
 
+=======
+
+%changelog
+>>>>>>> upstream/master
 * Fri Apr 20 2018 Jan De Luyck <jan@kcore.org> 1.3.6-1
 - Removed bundled nodejs-archiver and nodejs-shelljs
 - Updated to 1.3.6
